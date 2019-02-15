@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Library.Infrastructure.Extensions
@@ -15,5 +16,6 @@ namespace Library.Infrastructure.Extensions
             var output = 0;
             return int.TryParse(inputString, out output);
         }
+
     }
 }

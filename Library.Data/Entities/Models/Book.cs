@@ -25,10 +25,10 @@ namespace Library.Data.Entities.Models
         public int NumberOfCopies { get; set; }
         public int YearOfPublish { get; set; }
         public int NumberOfPages { get; set; }
-
+        public Author Author { get; set; }
         public Genre Genre { get; set; }
         public Publisher Publisher { get; set; }
-        public ICollection<AuthorBook> AuthorsBooks { get; set; }
+       
         public ICollection<Loan> Loans { get; set; }
 
         public override string ToString()
@@ -36,5 +36,6 @@ namespace Library.Data.Entities.Models
             return $"Name: {Name}  Number of Copies {NumberOfCopies} Num of pages: {NumberOfPages}" +
                    $"Publisher: {Publisher.Name} + Genre: {Genre.ToString()}";
         }
+
     }
 }

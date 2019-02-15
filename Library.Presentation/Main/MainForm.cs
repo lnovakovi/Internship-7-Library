@@ -22,5 +22,23 @@ namespace Library.Presentation.Main
             var addForm = new AddAuthor();
             addForm.ShowDialog();
         }
+
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            var addBook = new AddBook();
+            addBook.ShowDialog();
+        }
+
+        private void btnAddPublisher_Click(object sender, EventArgs e)
+        {
+            var addPublisher = new AddPublisher();
+            addPublisher.ShowDialog();
+        }
+
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            var addStudent = new AddPublisher();
+            addStudent.ShowDialog();
+        }
     }
 }

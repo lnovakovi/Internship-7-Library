@@ -128,7 +128,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Entities\LibraryContext.cs" />
     <Compile Include="Entities\Models\Author.cs" />
-    <Compile Include="Entities\Models\AuthorBook.cs" />
     <Compile Include="Entities\Models\Book.cs" />
     <Compile Include="Entities\Models\Loan.cs" />
     <Compile Include="Entities\Models\Publisher.cs" />
@@ -136,9 +135,13 @@
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\Genre.cs" />
     <Compile Include="Enums\Grade.cs" />
-    <Compile Include="Migrations\20190212194928_InitialCreate.cs" />
-    <Compile Include="Migrations\20190212194928_InitialCreate.designer.cs">
-      <DependentUpon>20190212194928_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\20190214202731_InitialCreate.cs" />
+    <Compile Include="Migrations\20190214202731_InitialCreate.designer.cs">
+      <DependentUpon>20190214202731_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190215213412_ChangedField.cs" />
+    <Compile Include="Migrations\20190215213412_ChangedField.designer.cs">
+      <DependentUpon>20190215213412_ChangedField.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

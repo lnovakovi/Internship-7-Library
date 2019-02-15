@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20190212194928_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190215213412_ChangedField")]
+    partial class ChangedField
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,30 +40,13 @@ namespace Library.Data.Migrations
                     b.ToTable("Authors");
                 });
 
-            modelBuilder.Entity("Library.Data.Entities.Models.AuthorBook", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AuthorId");
-
-                    b.Property<int>("BookId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("BookId");
-
-                    b.ToTable("AuthorBooks");
-                });
-
             modelBuilder.Entity("Library.Data.Entities.Models.Book", b =>
                 {
                     b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AuthorID");
 
                     b.Property<string>("Description");
 
@@ -80,6 +63,8 @@ namespace Library.Data.Migrations
                     b.Property<int>("YearOfPublish");
 
                     b.HasKey("BookId");
+
+                    b.HasIndex("AuthorID");
 
                     b.HasIndex("PublisherId");
 
@@ -134,11 +119,11 @@ namespace Library.Data.Migrations
 
                     b.Property<DateTime>("DateOfBirth");
 
+                    b.Property<int>("Gender");
+
                     b.Property<int>("Grade");
 
                     b.Property<string>("Name");
-
-                    b.Property<int>("Sex");
 
                     b.Property<string>("Surname");
 
@@ -147,21 +132,12 @@ namespace Library.Data.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("Library.Data.Entities.Models.AuthorBook", b =>
-                {
-                    b.HasOne("Library.Data.Entities.Models.Author", "Author")
-                        .WithMany("AuthorBooks")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Library.Data.Entities.Models.Book", "Book")
-                        .WithMany("AuthorsBooks")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Library.Data.Entities.Models.Book", b =>
                 {
+                    b.HasOne("Library.Data.Entities.Models.Author", "Author")
+                        .WithMany("Books")
+                        .HasForeignKey("AuthorID");
+
                     b.HasOne("Library.Data.Entities.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherId");

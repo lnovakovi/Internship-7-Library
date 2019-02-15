@@ -4,15 +4,63 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
+using Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain.Repositories
 {
     public class BookRepository
     {
-        public BookRepository(LibraryContext libraryContext)
+        private readonly LibraryContext _context;
+
+        public BookRepository()
         {
-            _libraryContext = libraryContext;
+            _context = new LibraryContext();
         }
-        private readonly LibraryContext _libraryContext;
+
+        public ICollection<Book> GetAllBooks()
+        {
+            return _context.Books.ToList();
+        }
+
+        public bool TryDelete(Book toDelete)
+        {
+            _context.Books.Remove(toDelete);
+            var numberOfChanges = _context.SaveChanges();
+            return numberOfChanges != 0;
+        }
+        public ICollection<Book> GetBooksByAuthor(Author bookToGet)
+        {
+            return _context.Books.Where(book => book.Author == bookToGet).ToList();
+        }
+
+        public string AddBook(Book bookToAdd)
+        {
+            if (CheckIfBookExists(bookToAdd))
+            {
+                return "Book already in database";
+            }
+            var book = new Book
+            {
+                Name = bookToAdd.Name,
+                Description = bookToAdd.Description,
+                NumberOfPages = bookToAdd.NumberOfPages,
+                YearOfPublish = bookToAdd.YearOfPublish,
+                Genre = bookToAdd.Genre,
+                NumberOfCopies = bookToAdd.NumberOfCopies,
+                Author = _context.Authors.Find(bookToAdd.Author.AuthorID),
+                Publisher = _context.Publishers.Find(bookToAdd.Publisher.PublisherId)
+            };
+            _context.Add(book);
+            _context.SaveChanges();
+            return "Saved!";
+        }
+
+        public bool CheckIfBookExists(Book bookToCheck)
+        {
+            return _context.Books.Any(book => book.Name == bookToCheck.Name && book.Author == bookToCheck.Author);
+        }
+
+
     }
 }

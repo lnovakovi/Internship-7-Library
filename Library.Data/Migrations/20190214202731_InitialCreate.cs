@@ -66,6 +66,7 @@ namespace Library.Data.Migrations
                     NumberOfCopies = table.Column<int>(nullable: false),
                     YearOfPublish = table.Column<int>(nullable: false),
                     NumberOfPages = table.Column<int>(nullable: false),
+                    AuthorID = table.Column<int>(nullable: true),
                     Genre = table.Column<int>(nullable: false),
                     PublisherId = table.Column<int>(nullable: true)
                 },
@@ -73,37 +74,17 @@ namespace Library.Data.Migrations
                 {
                     table.PrimaryKey("PK_Books", x => x.BookId);
                     table.ForeignKey(
+                        name: "FK_Books_Authors_AuthorID",
+                        column: x => x.AuthorID,
+                        principalTable: "Authors",
+                        principalColumn: "AuthorID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Books_Publishers_PublisherId",
                         column: x => x.PublisherId,
                         principalTable: "Publishers",
                         principalColumn: "PublisherId",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AuthorBooks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AuthorId = table.Column<int>(nullable: false),
-                    BookId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AuthorBooks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_AuthorBooks_Authors_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Authors",
-                        principalColumn: "AuthorID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AuthorBooks_Books_BookId",
-                        column: x => x.BookId,
-                        principalTable: "Books",
-                        principalColumn: "BookId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -136,14 +117,9 @@ namespace Library.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AuthorBooks_AuthorId",
-                table: "AuthorBooks",
-                column: "AuthorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AuthorBooks_BookId",
-                table: "AuthorBooks",
-                column: "BookId");
+                name: "IX_Books_AuthorID",
+                table: "Books",
+                column: "AuthorID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_PublisherId",
@@ -164,19 +140,16 @@ namespace Library.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AuthorBooks");
-
-            migrationBuilder.DropTable(
                 name: "Loans");
-
-            migrationBuilder.DropTable(
-                name: "Authors");
 
             migrationBuilder.DropTable(
                 name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Students");
+
+            migrationBuilder.DropTable(
+                name: "Authors");
 
             migrationBuilder.DropTable(
                 name: "Publishers");

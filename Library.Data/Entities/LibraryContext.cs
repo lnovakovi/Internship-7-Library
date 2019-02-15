@@ -12,10 +12,7 @@ namespace Library.Data.Entities
     public class LibraryContext : DbContext
     {
         //objekt priko kojeg se povezujemo na bazu
-
-
-        public DbSet<Author> Authors { get; set; }
-        public DbSet<AuthorBook> AuthorBooks { get; set; }
+        public DbSet<Author> Authors { get; set; }    
         public DbSet<Book> Books { get; set; }
         public DbSet<Loan> Loans { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
@@ -28,15 +25,6 @@ namespace Library.Data.Entities
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AuthorBook>()
-                .HasOne(b => b.Book)
-                .WithMany(ab => ab.AuthorsBooks)
-                .HasForeignKey(b => b.BookId);
-            modelBuilder.Entity<AuthorBook>()
-                .HasOne(a => a.Author)
-                .WithMany(ab => ab.AuthorBooks)
-                .HasForeignKey(a => a.AuthorId);
-
             modelBuilder.Entity<Loan>()
                 .HasOne(s => s.Student)
                 .WithMany(l => l.Loans)

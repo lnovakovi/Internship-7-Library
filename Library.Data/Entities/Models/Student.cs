@@ -32,7 +32,7 @@ namespace Library.Data.Entities.Models
             }
         }
         public DateTime DateOfBirth { get; set; }
-        public Gender Sex { get; set; }
+        public Gender Gender { get; set; }
         public Grade Grade { get; set; }
         public ICollection<Loan> Loans { get; set; }
 

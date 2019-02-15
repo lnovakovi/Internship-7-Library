@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -42,11 +42,10 @@
             this.cmbPublisher = new System.Windows.Forms.ComboBox();
             this.lblGenre = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.lstAuthor = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnNewAuthor = new System.Windows.Forms.Button();
+            this.cmbAuthor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -67,15 +66,14 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Description";
             // 
-            // label3
+            // label
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(379, 298);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Year of publish";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(379, 298);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(115, 20);
+            this.label.TabIndex = 2;
+            this.label.Text = "Year of publish";
             // 
             // label4
             // 
@@ -134,15 +132,15 @@
             // cmbGenre
             // 
             this.cmbGenre.FormattingEnabled = true;
-            this.cmbGenre.Location = new System.Drawing.Point(26, 411);
+            this.cmbGenre.Location = new System.Drawing.Point(561, 239);
             this.cmbGenre.Name = "cmbGenre";
-            this.cmbGenre.Size = new System.Drawing.Size(198, 28);
+            this.cmbGenre.Size = new System.Drawing.Size(255, 28);
             this.cmbGenre.TabIndex = 10;
             // 
             // cmbPublisher
             // 
             this.cmbPublisher.FormattingEnabled = true;
-            this.cmbPublisher.Location = new System.Drawing.Point(313, 411);
+            this.cmbPublisher.Location = new System.Drawing.Point(561, 141);
             this.cmbPublisher.Name = "cmbPublisher";
             this.cmbPublisher.Size = new System.Drawing.Size(249, 28);
             this.cmbPublisher.TabIndex = 11;
@@ -150,7 +148,7 @@
             // lblGenre
             // 
             this.lblGenre.AutoSize = true;
-            this.lblGenre.Location = new System.Drawing.Point(22, 372);
+            this.lblGenre.Location = new System.Drawing.Point(557, 208);
             this.lblGenre.Name = "lblGenre";
             this.lblGenre.Size = new System.Drawing.Size(54, 20);
             this.lblGenre.TabIndex = 12;
@@ -159,38 +157,30 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(316, 372);
+            this.label6.Location = new System.Drawing.Point(557, 105);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 20);
             this.label6.TabIndex = 13;
             this.label6.Text = "Publisher";
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(133, 464);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(135, 46);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(207, 412);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(135, 46);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(320, 464);
+            this.button2.Location = new System.Drawing.Point(383, 412);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(131, 46);
             this.button2.TabIndex = 15;
             this.button2.Text = "Return";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // lstAuthor
-            // 
-            this.lstAuthor.FormattingEnabled = true;
-            this.lstAuthor.ItemHeight = 20;
-            this.lstAuthor.Location = new System.Drawing.Point(561, 43);
-            this.lstAuthor.Name = "lstAuthor";
-            this.lstAuthor.Size = new System.Drawing.Size(268, 224);
-            this.lstAuthor.TabIndex = 16;
             // 
             // label7
             // 
@@ -201,26 +191,23 @@
             this.label7.TabIndex = 17;
             this.label7.Text = "Check Author";
             // 
-            // btnNewAuthor
+            // cmbAuthor
             // 
-            this.btnNewAuthor.Location = new System.Drawing.Point(742, 331);
-            this.btnNewAuthor.Name = "btnNewAuthor";
-            this.btnNewAuthor.Size = new System.Drawing.Size(129, 58);
-            this.btnNewAuthor.TabIndex = 18;
-            this.btnNewAuthor.Text = "New Author";
-            this.btnNewAuthor.UseVisualStyleBackColor = true;
-            this.btnNewAuthor.Click += new System.EventHandler(this.btnNewAuthor_Click);
+            this.cmbAuthor.FormattingEnabled = true;
+            this.cmbAuthor.Location = new System.Drawing.Point(561, 44);
+            this.cmbAuthor.Name = "cmbAuthor";
+            this.cmbAuthor.Size = new System.Drawing.Size(249, 28);
+            this.cmbAuthor.TabIndex = 18;
             // 
             // AddBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 535);
-            this.Controls.Add(this.btnNewAuthor);
+            this.Controls.Add(this.cmbAuthor);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.lstAuthor);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblGenre);
             this.Controls.Add(this.cmbPublisher);
@@ -232,11 +219,12 @@
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddBook";
             this.Text = "AddBook";
+            this.Load += new System.EventHandler(this.AddBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,7 +234,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtName;
@@ -258,10 +246,9 @@
         private System.Windows.Forms.ComboBox cmbPublisher;
         private System.Windows.Forms.Label lblGenre;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox lstAuthor;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnNewAuthor;
+        private System.Windows.Forms.ComboBox cmbAuthor;
     }
 }

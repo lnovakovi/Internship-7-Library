@@ -4,14 +4,16 @@ using Library.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190214202731_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,11 +119,11 @@ namespace Library.Data.Migrations
 
                     b.Property<DateTime>("DateOfBirth");
 
-                    b.Property<int>("Gender");
-
                     b.Property<int>("Grade");
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("Sex");
 
                     b.Property<string>("Surname");
 

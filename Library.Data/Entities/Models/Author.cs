@@ -30,14 +30,13 @@ namespace Library.Data.Entities.Models
             set
             {
                 _surname = value.RemoveWhiteSpaces();
-                _surname = _name.CapitalizeEachWord();
+                _surname = _surname.CapitalizeEachWord();
             }
         }
         public DateTime DateOfBirth { get; set; }
         public Gender Gender { get; set; }
-        public ICollection<AuthorBook> AuthorBooks { get; set; }
-
-
+        public ICollection<Book> Books { get; set; }
+        
         public override string ToString()
         {
             return $"Name: {NameSurname()} Date of Birth: {DateOfBirth.ToShortDateString()}";

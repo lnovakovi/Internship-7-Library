@@ -67,6 +67,7 @@
             this.btnAddStudent.TabIndex = 1;
             this.btnAddStudent.Text = "Add student";
             this.btnAddStudent.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
             // 
             // btnAddBook
             // 
@@ -76,6 +77,7 @@
             this.btnAddBook.TabIndex = 2;
             this.btnAddBook.Text = "Add book";
             this.btnAddBook.UseVisualStyleBackColor = true;
+            this.btnAddBook.Click += new System.EventHandler(this.btnAddBook_Click);
             // 
             // btnDeleteAuthor
             // 
@@ -112,7 +114,7 @@
             this.btnAddPublisher.TabIndex = 6;
             this.btnAddPublisher.Text = "Add publisher";
             this.btnAddPublisher.UseVisualStyleBackColor = true;
-            this.btnAddPublisher.Click += new System.EventHandler(this.button3_Click);
+            this.btnAddPublisher.Click += new System.EventHandler(this.btnAddPublisher_Click);
             // 
             // btnDeletePublisher
             // 
@@ -149,7 +151,6 @@
             this.btnBookDetails.TabIndex = 10;
             this.btnBookDetails.Text = "Book details";
             this.btnBookDetails.UseVisualStyleBackColor = true;
-            this.btnBookDetails.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // btnPublisherDetails
             // 

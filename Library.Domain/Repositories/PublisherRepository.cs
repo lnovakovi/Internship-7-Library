@@ -21,5 +21,10 @@ namespace Library.Domain.Repositories
             _context.Publishers.Add(toAdd);
             _context.SaveChanges();
         }
+
+        public ICollection<Publisher> GetPublishers()
+        {
+            return _context.Publishers.ToList();
+        }
     }
 }
