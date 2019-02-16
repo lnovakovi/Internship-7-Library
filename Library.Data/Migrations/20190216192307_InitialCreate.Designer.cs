@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20190215213412_ChangedField")]
-    partial class ChangedField
+    [Migration("20190216192307_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,7 +81,7 @@ namespace Library.Data.Migrations
 
                     b.Property<DateTime>("LoanDate");
 
-                    b.Property<float>("Overdue");
+                    b.Property<double>("Overdue");
 
                     b.Property<DateTime?>("ReturnDate");
 

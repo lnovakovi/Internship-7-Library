@@ -135,21 +135,9 @@
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\Genre.cs" />
     <Compile Include="Enums\Grade.cs" />
-    <Compile Include="Migrations\20190214202731_InitialCreate.cs" />
-    <Compile Include="Migrations\20190214202731_InitialCreate.designer.cs">
-      <DependentUpon>20190214202731_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190215213412_ChangedField.cs" />
-    <Compile Include="Migrations\20190215213412_ChangedField.designer.cs">
-      <DependentUpon>20190215213412_ChangedField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190216152218_ChangedTypeOverdue.cs" />
-    <Compile Include="Migrations\20190216152218_ChangedTypeOverdue.designer.cs">
-      <DependentUpon>20190216152218_ChangedTypeOverdue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\20190216164320_FixedSetterInStudent.cs" />
-    <Compile Include="Migrations\20190216164320_FixedSetterInStudent.designer.cs">
-      <DependentUpon>20190216164320_FixedSetterInStudent.cs</DependentUpon>
+    <Compile Include="Migrations\20190216192307_InitialCreate.cs" />
+    <Compile Include="Migrations\20190216192307_InitialCreate.designer.cs">
+      <DependentUpon>20190216192307_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

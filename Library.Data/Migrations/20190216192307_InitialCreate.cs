@@ -47,7 +47,7 @@ namespace Library.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: true),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
-                    Sex = table.Column<int>(nullable: false),
+                    Gender = table.Column<int>(nullable: false),
                     Grade = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -97,7 +97,7 @@ namespace Library.Data.Migrations
                     BookId = table.Column<int>(nullable: false),
                     LoanDate = table.Column<DateTime>(nullable: false),
                     ReturnDate = table.Column<DateTime>(nullable: true),
-                    Overdue = table.Column<float>(nullable: false)
+                    Overdue = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
