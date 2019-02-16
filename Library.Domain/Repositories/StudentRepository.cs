@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain.Repositories
 {
@@ -35,8 +36,9 @@ namespace Library.Domain.Repositories
 
         public List<Student> GetAllStudents()
         {
-            return _context.Students.OrderBy(student => student.Surname).ToList();
+            return _context.Students.Include(student => student.Loans).OrderBy(student => student.Surname).ToList();
         }
 
+       
     }
 }

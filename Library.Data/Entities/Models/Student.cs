@@ -28,7 +28,7 @@ namespace Library.Data.Entities.Models
             set
             {
                 _surname = value.RemoveWhiteSpaces();
-                _surname = _name.CapitalizeEachWord();
+                _surname = _surname.CapitalizeEachWord();
             }
         }
         public DateTime DateOfBirth { get; set; }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
+using Remotion.Linq.Utilities;
 
 namespace Library.Domain.Repositories
 {
@@ -18,9 +19,9 @@ namespace Library.Domain.Repositories
             _context = new LibraryContext();
         }
 
-        public ICollection<Book> GetAllBooks()
+        public List<Book> GetAllBooks()
         {
-            return _context.Books.ToList();
+            return _context.Books.Include(book => book.Publisher).Include(aut => aut.Author).ToList();
         }
 
         public bool TryDelete(Book toDelete)
@@ -29,9 +30,9 @@ namespace Library.Domain.Repositories
             var numberOfChanges = _context.SaveChanges();
             return numberOfChanges != 0;
         }
-        public ICollection<Book> GetBooksByAuthor(Author bookToGet)
+        public List<Book> GetBooksByAuthor(Author authorToGet)
         {
-            return _context.Books.Where(book => book.Author == bookToGet).ToList();
+            return _context.Books.Where(book => book.Author == authorToGet).ToList();
         }
 
         public string AddBook(Book bookToAdd)
@@ -60,7 +61,6 @@ namespace Library.Domain.Repositories
         {
             return _context.Books.Any(book => book.Name == bookToCheck.Name && book.Author == bookToCheck.Author);
         }
-
 
     }
 }

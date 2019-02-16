@@ -9,12 +9,16 @@ namespace Library.Infrastructure.Extensions
 {
     public static class StringExt
     {
-        public static bool CheckIfEmpty(this string inputString) => inputString == "";
-
-        public static bool TryParseInt(this string inputString)
+       
+        public static string RemoveWhiteSpaces(this string s)
         {
-            var output = 0;
-            return int.TryParse(inputString, out output);
+            s = s.Trim();
+            return Regex.Replace(s, @"\s{2,}", " ");
+        }
+
+        public static string CapitalizeEachWord(this string s)
+        {
+            return Regex.Replace(s.ToLower(), @"(^\w)|(\s\w)", m => m.Value.ToUpper());
         }
 
     }

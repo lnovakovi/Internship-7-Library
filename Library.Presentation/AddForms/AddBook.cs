@@ -87,7 +87,7 @@ namespace Library.Presentation.AddForms
 
         public bool AddPublisher()
         {
-            var publishers = _publisherRepository.GetPublishers();
+            var publishers = _publisherRepository.GetAllPublishers();
             foreach (var publisher in publishers)
             {
                 cmbPublisher.Items.Add(publisher);

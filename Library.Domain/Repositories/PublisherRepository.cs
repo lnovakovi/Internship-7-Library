@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Domain.Repositories
 {
@@ -22,9 +23,9 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
         }
 
-        public ICollection<Publisher> GetPublishers()
+        public List<Publisher> GetAllPublishers()
         {
-            return _context.Publishers.ToList();
+            return _context.Publishers.Include(pub=> pub.Books).ToList();
         }
     }
 }

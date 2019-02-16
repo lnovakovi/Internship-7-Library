@@ -39,12 +39,12 @@ namespace Library.Data.Entities.Models
         
         public override string ToString()
         {
-            return $"Name: {NameSurname()} Date of Birth: {DateOfBirth.ToShortDateString()}";
+            return $" {NameSurname()} Date of Birth: {DateOfBirth.ToShortDateString()}";
         }
 
         public string NameSurname()
         {
-            return $"Name: {Name} {Surname}";
+            return $"{Name} {Surname}";
         }
     }
 }

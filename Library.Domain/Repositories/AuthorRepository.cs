@@ -36,6 +36,10 @@ namespace Library.Domain.Repositories
         {
             return _context.Authors.Any(author => author.Name == authorToCheck.Name);
         }
+        public Author GetAuthorByName(string name)
+        {
+            return _context.Authors.First(author => author.NameSurname() == name);
+        }
 
         public void Delete()
         {

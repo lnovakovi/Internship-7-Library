@@ -43,7 +43,7 @@ namespace Library.Presentation.AddForms
             var grade = Enum.GetValues(typeof(Grade));
             foreach (var g in grade)
             {
-                cmbGender.Items.Add(g);
+                cmbGrade.Items.Add(g);
             }
         }
 

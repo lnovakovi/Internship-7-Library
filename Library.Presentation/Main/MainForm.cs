@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library.Domain.Repositories;
 using Library.Presentation.AddForms;
+using Library.Presentation.DetailsForm;
+using Library.Presentation.EditForms;
 
 namespace Library.Presentation.Main
 {
     public partial class MainForm : Form
     {
+        private readonly LoanRepository _loanRepository;
+
         public MainForm()
         {
             InitializeComponent();
+            _loanRepository = new LoanRepository();
         }
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
@@ -37,8 +43,84 @@ namespace Library.Presentation.Main
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
-            var addStudent = new AddPublisher();
+            var addStudent = new AddStudent();
             addStudent.ShowDialog();
+        }
+
+
+        private void btnAuthorDetails_Click(object sender, EventArgs e)
+        {
+            var authorDet = new AuthorDetails();
+            authorDet.ShowDialog();
+        }
+
+        private void btnStudentDetails_Click(object sender, EventArgs e)
+        {
+            var studentDet = new StudentDetails();
+            studentDet.ShowDialog();
+        }
+
+        private void btnBookDetails_Click(object sender, EventArgs e)
+        {
+            var bookDet = new BookDetails();
+            bookDet.ShowDialog();
+        }
+
+        private void btnPublisherDetails_Click(object sender, EventArgs e)
+        {
+            var publisherDet = new PublisherDetails();
+            publisherDet.ShowDialog();
+        }
+
+        private void btnEditAuthor_Click(object sender, EventArgs e)
+        {
+            var editA = new EditAuthor();
+            editA.ShowDialog();
+        }
+
+        private void btnEditStudent_Click(object sender, EventArgs e)
+        {
+            var editS = new EditStudent();
+            editS.ShowDialog();
+        }
+
+        private void btnEditBook_Click(object sender, EventArgs e)
+        {
+            var editB = new EditBook();
+            editB.ShowDialog();
+        }
+
+        private void btnEditPublisher_Click(object sender, EventArgs e)
+        {
+            var edit = new EditPublisher();
+            edit.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnBorrow_Click(object sender, EventArgs e)
+        {
+            var newBorrow = new NewBorrow();
+            newBorrow.ShowDialog();
+            ResetLoans();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            ResetLoans();
+        }
+
+        public void ResetLoans()
+        {
+            lstLoans.Items.Clear();
+            var loans = _loanRepository.GetAllLoans();
+            foreach (var loan in loans)
+            {
+                lstLoans.Items.Add(loan.LoanDetails());
+            }
         }
     }
 }

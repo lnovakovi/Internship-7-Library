@@ -9,15 +9,25 @@ namespace Library.Infrastructure.Extensions
 {
     public static class CheckInput
     {
-        public static string RemoveWhiteSpaces(this string s)
+        public static bool CheckIfEmpty(this string inputString) => inputString == "";
+
+        public static bool TryParseInt(this string inputString)
         {
-            s = s.Trim();
-            return Regex.Replace(s, @"\s{2,}", " ");
+            var output = 0;
+            return int.TryParse(inputString, out output);
         }
 
-        public static string CapitalizeEachWord(this string s)
+        public static bool CheckForAges(DateTime date,int downAge, int? upAge)
         {
-            return Regex.Replace(s.ToLower(), @"(^\w)|(\s\w)", m => m.Value.ToUpper());
+            var years = DateTime.Now.Year - date.Year;
+
+            if ((date.Month > DateTime.Now.Month) || (date.Month == DateTime.Now.Month && date.Day > DateTime.Now.Day))
+                years--;
+
+            if (upAge != null)
+                return years > downAge && years < upAge;
+            return years > downAge;
+
         }
     }
 }
