@@ -62,6 +62,7 @@
             this.lstBooks.ItemHeight = 20;
             this.lstBooks.Location = new System.Drawing.Point(390, 98);
             this.lstBooks.Name = "lstBooks";
+            this.lstBooks.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lstBooks.Size = new System.Drawing.Size(270, 324);
             this.lstBooks.TabIndex = 2;
             // 
@@ -97,6 +98,7 @@
             // 
             this.txtDate.Location = new System.Drawing.Point(28, 173);
             this.txtDate.Name = "txtDate";
+            this.txtDate.ReadOnly = true;
             this.txtDate.Size = new System.Drawing.Size(284, 26);
             this.txtDate.TabIndex = 6;
             // 

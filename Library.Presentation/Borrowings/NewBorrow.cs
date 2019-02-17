@@ -54,6 +54,11 @@ namespace Library.Presentation.AddForms
         private void btnBorrow_Click(object sender, EventArgs e)
         {
             var main = new MainForm();
+            if (cmbStudent.SelectedItem == null || cmbBook.SelectedItem == null)
+            {
+                MessageBox.Show(@"You have to choose both",@"INFO");
+                return;
+            }
             var selectedStudent = cmbStudent.SelectedItem.ToString();
             var selectedBook = cmbBook.SelectedItem.ToString();
 
@@ -67,9 +72,10 @@ namespace Library.Presentation.AddForms
                 Student = wantedStudent,
                 Book = wantedBook
             };
-            _loanRepository.AddLoan(loan);
+            
+            MessageBox.Show(_loanRepository.AddLoan(loan),@"INFO");
             main.ResetLoans();
-            MessageBox.Show(@"Loan activated");
+
             Close();
         }
     }

@@ -45,7 +45,7 @@ namespace Library.Presentation.AddForms
             var desc = txtDescription.Text;
             var copy = txtNumCopy.Text;
             var pages = txtNumPages.Text;
-            var year = txtNumPages.Text;
+            var year = txtYearPublish.Text;
             var publisher = cmbPublisher.SelectedItem as Publisher;
             var author = cmbAuthor.SelectedItem as Author;
             var genre = cmbGenre.SelectedItem;
@@ -58,6 +58,11 @@ namespace Library.Presentation.AddForms
                 return;
             }
 
+            if (int.Parse(year) > 2019 || year.Length>4 || year.Length<4)
+            {
+                MessageBox.Show(@"Can't add year that didn't happened",@"WARNING");
+                return;
+            }
             var book = new Book
             {
                 Name = name,
@@ -68,9 +73,7 @@ namespace Library.Presentation.AddForms
                 Publisher = publisher,
                 Genre = (Genre)Enum.Parse(typeof(Genre), genre.ToString()),
                 Author = author
-            };
-
-            ;
+            };           
             MessageBox.Show(_bookRepository.AddBook(book),@"INFO",MessageBoxButtons.OKCancel);
             Close();
           

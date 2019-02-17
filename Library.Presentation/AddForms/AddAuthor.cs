@@ -42,24 +42,30 @@ namespace Library.Presentation.AddForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //----CHECK FOR AGES--
-            //if (txtName.Text.CheckIfEmpty() || txtSurname.Text.CheckIfEmpty() || cmbGender.SelectedIndex > -1) return;
+            if (txtName.Text.CheckIfEmpty() || txtSurname.Text.CheckIfEmpty() || cmbGender.SelectedItem == null)
+            {
+                MessageBox.Show(@"All fields required", @"WARNING");
+                return;
+            }
+
+            if (!date.Value.CheckForAges(18,null))
+            {
+                MessageBox.Show("Must be older than 18");
+                return;
+            }
             var name = txtName.Text;
-            MessageBox.Show(name);
             var surname = txtSurname.Text;
-            MessageBox.Show(surname);
             var dateOfBirth = date.Value.Date;
-            var gender = (Gender)Enum.Parse(typeof(Gender), cmbGender.SelectedItem.ToString());
-           
+            var gender = (Gender)Enum.Parse(typeof(Gender), cmbGender.SelectedItem.ToString());           
             var author = new Author
              {
                  Name = name,
                  Surname = surname,
                  DateOfBirth = dateOfBirth,
                  Gender = gender
-             };
-            ;
+             };          
             MessageBox.Show(_authorRepository.AddAuthor(author), @"SAVED DATA");
+            Close();
 
 
         }

@@ -39,6 +39,5 @@ namespace Library.Domain.Repositories
             return _context.Students.Include(student => student.Loans).OrderBy(student => student.Surname).ToList();
         }
 
-       
     }
 }

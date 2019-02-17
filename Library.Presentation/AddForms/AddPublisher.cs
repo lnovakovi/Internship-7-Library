@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Infrastructure.Extensions;
 
 namespace Library.Presentation.AddForms
 {
@@ -29,17 +30,20 @@ namespace Library.Presentation.AddForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // ---------CHECK INPUTS and CHECK IF PUBLISHER IN BASE
+            
             var name = txtName.Text;
             var address = txtAddress.Text;
+            if (name.CheckIfEmpty() || address.CheckIfEmpty())
+            {
+                MessageBox.Show(@"All fields required", @"WARNING");
+                return;
+            }
             var publisher = new Publisher
             {
                 Name = name,
                 Address = address
             };
-
-            _publisherRepository.AddPublisher(publisher);
-            MessageBox.Show(@"Saved");
+            MessageBox.Show(_publisherRepository.AddPublisher(publisher),@"INFO");
             Close();
         }
     }

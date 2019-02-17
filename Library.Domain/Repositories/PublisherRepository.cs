@@ -17,15 +17,24 @@ namespace Library.Domain.Repositories
         }
 
         private readonly LibraryContext _context;
-        public void AddPublisher(Publisher toAdd)
+        public string AddPublisher(Publisher toAdd)
         {
+            if (CheckIfPublisherExists(toAdd))
+            {
+                return "Publisher already in base";
+            }
             _context.Publishers.Add(toAdd);
             _context.SaveChanges();
+            return "Saved!";
         }
 
         public List<Publisher> GetAllPublishers()
         {
             return _context.Publishers.Include(pub=> pub.Books).ToList();
+        }
+        public bool CheckIfPublisherExists(Publisher publisherToCheck)
+        {
+            return _context.Publishers.Any(pub => pub.Name.ToLower() == publisherToCheck.Name.ToLower());
         }
     }
 }

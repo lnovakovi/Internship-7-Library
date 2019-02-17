@@ -126,6 +126,7 @@
             this.lstLoans.ItemHeight = 20;
             this.lstLoans.Location = new System.Drawing.Point(315, 54);
             this.lstLoans.Name = "lstLoans";
+            this.lstLoans.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lstLoans.Size = new System.Drawing.Size(473, 264);
             this.lstLoans.TabIndex = 10;
             // 

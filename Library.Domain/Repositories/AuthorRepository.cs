@@ -41,14 +41,20 @@ namespace Library.Domain.Repositories
             return _context.Authors.First(author => author.NameSurname() == name);
         }
 
-        public void Delete()
+        public bool EditAuthor(Author oldAuthor, Author newAuthor)
         {
-            //to do
+            var authToEdit = _context.Authors.FirstOrDefault(author => author.AuthorID == oldAuthor.AuthorID);
+            if (authToEdit != null)
+            {
+                authToEdit.Name = newAuthor.Name;
+                authToEdit.Surname = newAuthor.Surname;
+                authToEdit.DateOfBirth = newAuthor.DateOfBirth;
+                authToEdit.Gender = newAuthor.Gender;
+            }
+
+            return _context.SaveChanges() != 0;
         }
 
-        public void GetBooks()
-        {
-            //to do
-        }
+        
     }
 }

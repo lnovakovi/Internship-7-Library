@@ -94,6 +94,7 @@
             // 
             this.txtAuthor.Location = new System.Drawing.Point(39, 154);
             this.txtAuthor.Name = "txtAuthor";
+            this.txtAuthor.ReadOnly = true;
             this.txtAuthor.Size = new System.Drawing.Size(204, 26);
             this.txtAuthor.TabIndex = 6;
             // 
@@ -128,6 +129,7 @@
             // 
             this.txtCopies.Location = new System.Drawing.Point(44, 256);
             this.txtCopies.Name = "txtCopies";
+            this.txtCopies.ReadOnly = true;
             this.txtCopies.Size = new System.Drawing.Size(94, 26);
             this.txtCopies.TabIndex = 10;
             // 
@@ -135,6 +137,7 @@
             // 
             this.txtPages.Location = new System.Drawing.Point(228, 255);
             this.txtPages.Name = "txtPages";
+            this.txtPages.ReadOnly = true;
             this.txtPages.Size = new System.Drawing.Size(97, 26);
             this.txtPages.TabIndex = 11;
             // 
@@ -142,6 +145,7 @@
             // 
             this.txtYear.Location = new System.Drawing.Point(403, 257);
             this.txtYear.Name = "txtYear";
+            this.txtYear.ReadOnly = true;
             this.txtYear.Size = new System.Drawing.Size(98, 26);
             this.txtYear.TabIndex = 12;
             // 
@@ -158,6 +162,7 @@
             // 
             this.txtPublisher.Location = new System.Drawing.Point(294, 154);
             this.txtPublisher.Name = "txtPublisher";
+            this.txtPublisher.ReadOnly = true;
             this.txtPublisher.Size = new System.Drawing.Size(207, 26);
             this.txtPublisher.TabIndex = 14;
             // 

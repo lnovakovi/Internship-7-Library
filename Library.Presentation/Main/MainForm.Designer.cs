@@ -45,6 +45,7 @@
             this.btnCloseBorrow = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lstLoans = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAddAuthor
@@ -170,15 +171,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(615, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 20);
+            this.label1.Size = new System.Drawing.Size(119, 25);
             this.label1.TabIndex = 17;
             this.label1.Text = "Actual loans";
             // 
             // btnBorrow
             // 
-            this.btnBorrow.Location = new System.Drawing.Point(436, 276);
+            this.btnBorrow.Location = new System.Drawing.Point(363, 381);
             this.btnBorrow.Name = "btnBorrow";
             this.btnBorrow.Size = new System.Drawing.Size(165, 68);
             this.btnBorrow.TabIndex = 18;
@@ -188,16 +190,17 @@
             // 
             // btnCloseBorrow
             // 
-            this.btnCloseBorrow.Location = new System.Drawing.Point(436, 363);
+            this.btnCloseBorrow.Location = new System.Drawing.Point(363, 486);
             this.btnCloseBorrow.Name = "btnCloseBorrow";
-            this.btnCloseBorrow.Size = new System.Drawing.Size(165, 62);
+            this.btnCloseBorrow.Size = new System.Drawing.Size(165, 66);
             this.btnCloseBorrow.TabIndex = 19;
             this.btnCloseBorrow.Text = "Close borrow";
             this.btnCloseBorrow.UseVisualStyleBackColor = true;
+            this.btnCloseBorrow.Click += new System.EventHandler(this.btnCloseBorrow_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(445, 573);
+            this.btnExit.Location = new System.Drawing.Point(733, 655);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(156, 47);
             this.btnExit.TabIndex = 20;
@@ -209,16 +212,26 @@
             // 
             this.lstLoans.FormattingEnabled = true;
             this.lstLoans.ItemHeight = 20;
-            this.lstLoans.Location = new System.Drawing.Point(623, 66);
+            this.lstLoans.Location = new System.Drawing.Point(584, 57);
             this.lstLoans.Name = "lstLoans";
-            this.lstLoans.Size = new System.Drawing.Size(514, 604);
+            this.lstLoans.Size = new System.Drawing.Size(514, 504);
             this.lstLoans.TabIndex = 21;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(827, 573);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(375, 64);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "*Choose loan you want to close";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1149, 705);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lstLoans);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCloseBorrow);
@@ -263,5 +276,6 @@
         private System.Windows.Forms.Button btnCloseBorrow;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ListBox lstLoans;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -60,6 +60,7 @@
             // 
             this.txtAddress.Location = new System.Drawing.Point(32, 157);
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(305, 26);
             this.txtAddress.TabIndex = 3;
             // 
@@ -69,6 +70,7 @@
             this.lstBooks.ItemHeight = 20;
             this.lstBooks.Location = new System.Drawing.Point(431, 52);
             this.lstBooks.Name = "lstBooks";
+            this.lstBooks.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lstBooks.Size = new System.Drawing.Size(261, 324);
             this.lstBooks.TabIndex = 4;
             // 

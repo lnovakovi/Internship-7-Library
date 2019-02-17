@@ -30,10 +30,9 @@ namespace Library.Presentation.DetailsForm
 
         private void BookDetails_Load(object sender, EventArgs e)
         {
-            foreach (var book in _listOfBooks)
-            {
-                cmbBook.Items.Add(book.Name);
-            }
+            if (AddBooks()) return;
+            MessageBox.Show(@"No details because base is empty", @"WARNING");
+            Close();          
         }
 
         private void cmbBook_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,6 +44,15 @@ namespace Library.Presentation.DetailsForm
             txtPublisher.Text = wantedBook.Publisher.Name;
             txtYear.Text = wantedBook.YearOfPublish.ToString();
             txtAuthor.Text = wantedBook.Author.NameSurname();
+        }
+
+        private bool AddBooks()
+        {
+            foreach (var book in _listOfBooks)
+            {
+                cmbBook.Items.Add(book.Name);
+            }
+            return cmbBook.Items.Count != 0;
         }
         // -------------add delete book
     }

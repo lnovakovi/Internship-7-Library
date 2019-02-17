@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
 using Library.Presentation.AddForms;
 using Library.Presentation.DetailsForm;
@@ -17,12 +18,17 @@ namespace Library.Presentation.Main
     public partial class MainForm : Form
     {
         private readonly LoanRepository _loanRepository;
+        private readonly StudentRepository _studentRepository;
+        private readonly BookRepository _bookRepository;
 
         public MainForm()
         {
             InitializeComponent();
             _loanRepository = new LoanRepository();
+            _studentRepository = new StudentRepository();
+            _bookRepository = new BookRepository();
         }
+
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
             var addForm = new AddAuthor();
@@ -74,7 +80,7 @@ namespace Library.Presentation.Main
 
         private void btnEditAuthor_Click(object sender, EventArgs e)
         {
-            var editA = new EditAuthor();
+            var editA = new MainEditForm();
             editA.ShowDialog();
         }
 
@@ -116,11 +122,19 @@ namespace Library.Presentation.Main
         public void ResetLoans()
         {
             lstLoans.Items.Clear();
-            var loans = _loanRepository.GetAllLoans();
+            var loans = _loanRepository.GetActiveLoans();
             foreach (var loan in loans)
             {
-                lstLoans.Items.Add(loan.LoanDetails());
+                lstLoans.Items.Add( loan.LoanDetails());
             }
         }
+
+        private void btnCloseBorrow_Click(object sender, EventArgs e)
+        {
+            var selectedLoan = lstLoans.SelectedItem.ToString();
+            _loanRepository.CloseLoan(selectedLoan);
+            ResetLoans();
+        }
+
     }
 }

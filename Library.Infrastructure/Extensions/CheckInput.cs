@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,16 +18,15 @@ namespace Library.Infrastructure.Extensions
             return int.TryParse(inputString, out output);
         }
 
-        public static bool CheckForAges(DateTime date,int downAge, int? upAge)
+        public static bool CheckForAges(this DateTime date,int downAge, int? upAge)
         {
             var years = DateTime.Now.Year - date.Year;
-
             if ((date.Month > DateTime.Now.Month) || (date.Month == DateTime.Now.Month && date.Day > DateTime.Now.Day))
                 years--;
 
             if (upAge != null)
-                return years > downAge && years < upAge;
-            return years > downAge;
+                return years >= downAge && years <= upAge;
+            return years >= downAge;
 
         }
     }

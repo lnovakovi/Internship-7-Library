@@ -21,8 +21,7 @@ namespace Library.Presentation.DetailsForm
         {
             InitializeComponent();
             _publisherRepository = new PublisherRepository();
-            _listOfPublishers = _publisherRepository.GetAllPublishers();
-            
+            _listOfPublishers = _publisherRepository.GetAllPublishers();          
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -32,6 +31,7 @@ namespace Library.Presentation.DetailsForm
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            lstBooks.Items.Clear();
             var selectedPublisher = cmbName.SelectedItem.ToString();
             var wantedPublisher = _listOfPublishers.First(pub => pub.Name == selectedPublisher);
             txtAddress.Text = wantedPublisher.Address;
@@ -47,7 +47,6 @@ namespace Library.Presentation.DetailsForm
             {
                 cmbName.Items.Add(pub.Name);
             }
-
             return cmbName.Items.Count != 0;
         }
 
