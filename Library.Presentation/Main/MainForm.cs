@@ -78,29 +78,7 @@ namespace Library.Presentation.Main
             publisherDet.ShowDialog();
         }
 
-        private void btnEditAuthor_Click(object sender, EventArgs e)
-        {
-            var editA = new MainEditForm();
-            editA.ShowDialog();
-        }
-
-        private void btnEditStudent_Click(object sender, EventArgs e)
-        {
-            var editS = new EditStudent();
-            editS.ShowDialog();
-        }
-
-        private void btnEditBook_Click(object sender, EventArgs e)
-        {
-            var editB = new EditBook();
-            editB.ShowDialog();
-        }
-
-        private void btnEditPublisher_Click(object sender, EventArgs e)
-        {
-            var edit = new EditPublisher();
-            edit.ShowDialog();
-        }
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -131,6 +109,9 @@ namespace Library.Presentation.Main
 
         private void btnCloseBorrow_Click(object sender, EventArgs e)
         {
+            
+            if (lstLoans.SelectedItem == null)
+                MessageBox.Show(@"Choose loan", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             var selectedLoan = lstLoans.SelectedItem.ToString();
             _loanRepository.CloseLoan(selectedLoan);
             ResetLoans();

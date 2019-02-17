@@ -10,13 +10,14 @@ using System.Windows.Forms;
 using Library.Data.Entities.Models;
 using Library.Data.Enums;
 using Library.Domain.Repositories;
+using Library.Infrastructure.Extensions;
 
 namespace Library.Presentation.EditForms
 {
     public partial class EditAuthor : Form
     {
         private readonly AuthorRepository _authorRepository;
-        private Author _authToEdit;
+        private readonly Author _authToEdit;
 
         public EditAuthor(Author authToEdit)
         {
@@ -47,18 +48,28 @@ namespace Library.Presentation.EditForms
         private void btnSave_Click(object sender, EventArgs e)
         {
             var result =MessageBox.Show(@"Are you sure? ", @"WARNING", MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-            if (DialogResult.OK == result)
+            switch (result)
             {
-                var author = new Author
+                case DialogResult.OK:
                 {
-                    Name = txtAuthor.Text,
-                    Surname = txtSurname.Text,
-                    DateOfBirth = dateBirth.Value,
-                    Gender = (Gender) Enum.Parse(typeof(Gender), cmbGender.SelectedItem.ToString())
-                };
-                if (_authorRepository.EditAuthor(_authToEdit, author))
-                    MessageBox.Show("Edited!", "INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (!dateBirth.Value.CheckForAges(18,null))
+                    {
+                        MessageBox.Show(@"Must be older than 18!", @"WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    var author = new Author
+                    {
+                        Name = txtAuthor.Text,
+                        Surname = txtSurname.Text,
+                        DateOfBirth = dateBirth.Value,
+                        Gender = (Gender) Enum.Parse(typeof(Gender), cmbGender.SelectedItem.ToString())
+                    };
+                    if (_authorRepository.EditAuthor(_authToEdit, author))
+                        MessageBox.Show(@"Edited!", @"INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                }
             }
+            Close();
         }
     }
 }

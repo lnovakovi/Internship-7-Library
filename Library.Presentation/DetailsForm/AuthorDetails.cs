@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Presentation.EditForms;
 
 namespace Library.Presentation.DetailsForm
 {
@@ -16,6 +17,8 @@ namespace Library.Presentation.DetailsForm
     {
         private readonly AuthorRepository _authorRepository;
         private readonly BookRepository _bookRepository;
+        private Author _wantedAuthor;
+        
         public AuthorDetails()
         {
             InitializeComponent();
@@ -25,6 +28,7 @@ namespace Library.Presentation.DetailsForm
         }
         public bool AddAuthors()
         {
+            cmbAuthor.Items.Clear();
             var authors = _authorRepository.GetAllAuthors();
             foreach (var author in authors)
             {
@@ -45,9 +49,9 @@ namespace Library.Presentation.DetailsForm
         {
             lstBooks.Items.Clear();
             var selectedAuthor = cmbAuthor.SelectedItem.ToString();        
-            var wantedAuthor = _authorRepository.GetAuthorByName(selectedAuthor);
-            var books = _bookRepository.GetBooksByAuthor(wantedAuthor);
-            txtDate.Text = wantedAuthor.DateOfBirth.ToShortDateString();
+            _wantedAuthor = _authorRepository.GetAuthorByName(selectedAuthor);
+            var books = _bookRepository.GetBooksByAuthor(_wantedAuthor);
+            txtDate.Text = _wantedAuthor.DateOfBirth.ToShortDateString();
             foreach (var book in books)
             {
                 lstBooks.Items.Add(book.Name);
@@ -56,6 +60,44 @@ namespace Library.Presentation.DetailsForm
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var editForm = new EditAuthor(_wantedAuthor);
+            editForm.ShowDialog();
+            AddAuthors();
+
+        }
+
+        private void btnDeleteAuthor_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(@"Are you sure? ", @"WARNING", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (result)
+            {
+                case DialogResult.OK:
+                {
+                    if (cmbAuthor.SelectedItem == null)
+                    {
+                        MessageBox.Show(@"Choose an author", @"WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    var author = _authorRepository.GetAuthorByName(cmbAuthor.SelectedItem.ToString());
+                    var books = _bookRepository.GetBooksByAuthor(author);
+                    if (books.Count>0)
+                    {
+                        MessageBox.Show(@"Can't delete author without removing his book first", @"INFO", MessageBoxButtons.OK);
+                        return;
+                    }
+
+                    if (_authorRepository.TryDelete(author))
+                        MessageBox.Show($@"Deleted {author.NameSurname()}");
+                        break;
+                }
+            }
+            
             Close();
         }
     }

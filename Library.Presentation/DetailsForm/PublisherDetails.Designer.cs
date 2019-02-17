@@ -36,6 +36,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.cmbName = new System.Windows.Forms.ComboBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -85,12 +86,13 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(110, 228);
+            this.btnDelete.Location = new System.Drawing.Point(202, 229);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(121, 48);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnExit
             // 
@@ -111,11 +113,22 @@
             this.cmbName.TabIndex = 8;
             this.cmbName.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(52, 229);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(118, 47);
+            this.btnEdit.TabIndex = 9;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // PublisherDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.cmbName);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
@@ -142,5 +155,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ComboBox cmbName;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

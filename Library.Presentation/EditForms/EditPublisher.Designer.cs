@@ -28,12 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(28, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 98);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Address";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(32, 46);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(288, 26);
+            this.txtName.TabIndex = 2;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(32, 132);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(288, 26);
+            this.txtAddress.TabIndex = 3;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(126, 189);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(118, 42);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(126, 250);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(118, 39);
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // EditPublisher
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(470, 367);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Name = "EditPublisher";
             this.Text = "EditPublisher";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnExit;
     }
 }

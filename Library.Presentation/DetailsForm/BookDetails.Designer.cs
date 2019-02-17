@@ -42,20 +42,21 @@
             this.txtYear = new System.Windows.Forms.TextBox();
             this.Publisher = new System.Windows.Forms.Label();
             this.txtPublisher = new System.Windows.Forms.TextBox();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDeleteBook
             // 
-            this.btnDeleteBook.Location = new System.Drawing.Point(112, 326);
+            this.btnDeleteBook.Location = new System.Drawing.Point(215, 326);
             this.btnDeleteBook.Name = "btnDeleteBook";
             this.btnDeleteBook.Size = new System.Drawing.Size(131, 45);
             this.btnDeleteBook.TabIndex = 1;
-            this.btnDeleteBook.Text = "Delete Book";
+            this.btnDeleteBook.Text = "Delete ";
             this.btnDeleteBook.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(276, 326);
+            this.btnExit.Location = new System.Drawing.Point(383, 326);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(130, 45);
             this.btnExit.TabIndex = 2;
@@ -166,11 +167,22 @@
             this.txtPublisher.Size = new System.Drawing.Size(207, 26);
             this.txtPublisher.TabIndex = 14;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(68, 325);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(108, 46);
+            this.btnEdit.TabIndex = 15;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // BookDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 484);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.Publisher);
             this.Controls.Add(this.txtYear);
@@ -208,5 +220,6 @@
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.Label Publisher;
         private System.Windows.Forms.TextBox txtPublisher;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

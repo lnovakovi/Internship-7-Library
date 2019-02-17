@@ -27,6 +27,7 @@ namespace Library.Domain.Repositories
             _context.SaveChanges();
             return "Saved to base";
         }
+
         public List<Author> GetAllAuthors()
         {
             return _context.Authors.OrderBy(author => author.Surname).ToList();
@@ -36,9 +37,10 @@ namespace Library.Domain.Repositories
         {
             return _context.Authors.Any(author => author.Name == authorToCheck.Name);
         }
+
         public Author GetAuthorByName(string name)
         {
-            return _context.Authors.First(author => author.NameSurname() == name);
+            return GetAllAuthors().First(author => author.NameSurname() == name);
         }
 
         public bool EditAuthor(Author oldAuthor, Author newAuthor)
@@ -55,6 +57,14 @@ namespace Library.Domain.Repositories
             return _context.SaveChanges() != 0;
         }
 
-        
+        public bool TryDelete(Author toDelete)
+        {
+            
+            _context.Authors.Remove(toDelete);
+            var numberOfChanges = _context.SaveChanges();
+            return numberOfChanges != 0;
+        }
+
+
     }
 }

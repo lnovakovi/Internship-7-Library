@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.Data.Entities
 {
-    public class LibraryContext : DbContext
+    public  class LibraryContext : DbContext
     {
         //objekt priko kojeg se povezujemo na bazu
         public DbSet<Author> Authors { get; set; }    
@@ -19,22 +19,25 @@ namespace Library.Data.Entities
         public DbSet<Student> Students { get; set; }
 
         //configuring many to many relations , Fluent Api
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["LibraryDatabase"].ConnectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+
             modelBuilder.Entity<Loan>()
                 .HasOne(s => s.Student)
                 .WithMany(l => l.Loans)
                 .HasForeignKey(s => s.StudentId);
+                
+                
             modelBuilder.Entity<Loan>()
                 .HasOne(b => b.Book)
                 .WithMany(l => l.Loans)
                 .HasForeignKey(b => b.BookId);
-
-
         }
 
     }

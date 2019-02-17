@@ -36,10 +36,6 @@
             this.btnAuthorDetails = new System.Windows.Forms.Button();
             this.btnBookDetails = new System.Windows.Forms.Button();
             this.btnPublisherDetails = new System.Windows.Forms.Button();
-            this.btnEditStudent = new System.Windows.Forms.Button();
-            this.btnEditAuthor = new System.Windows.Forms.Button();
-            this.btnEditBook = new System.Windows.Forms.Button();
-            this.btnEditPublisher = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBorrow = new System.Windows.Forms.Button();
             this.btnCloseBorrow = new System.Windows.Forms.Button();
@@ -90,7 +86,7 @@
             // 
             // btnStudentDetails
             // 
-            this.btnStudentDetails.Location = new System.Drawing.Point(219, 113);
+            this.btnStudentDetails.Location = new System.Drawing.Point(33, 430);
             this.btnStudentDetails.Name = "btnStudentDetails";
             this.btnStudentDetails.Size = new System.Drawing.Size(157, 65);
             this.btnStudentDetails.TabIndex = 8;
@@ -100,7 +96,7 @@
             // 
             // btnAuthorDetails
             // 
-            this.btnAuthorDetails.Location = new System.Drawing.Point(219, 38);
+            this.btnAuthorDetails.Location = new System.Drawing.Point(33, 346);
             this.btnAuthorDetails.Name = "btnAuthorDetails";
             this.btnAuthorDetails.Size = new System.Drawing.Size(157, 68);
             this.btnAuthorDetails.TabIndex = 9;
@@ -110,7 +106,7 @@
             // 
             // btnBookDetails
             // 
-            this.btnBookDetails.Location = new System.Drawing.Point(219, 189);
+            this.btnBookDetails.Location = new System.Drawing.Point(33, 505);
             this.btnBookDetails.Name = "btnBookDetails";
             this.btnBookDetails.Size = new System.Drawing.Size(157, 56);
             this.btnBookDetails.TabIndex = 10;
@@ -120,7 +116,7 @@
             // 
             // btnPublisherDetails
             // 
-            this.btnPublisherDetails.Location = new System.Drawing.Point(219, 251);
+            this.btnPublisherDetails.Location = new System.Drawing.Point(32, 579);
             this.btnPublisherDetails.Name = "btnPublisherDetails";
             this.btnPublisherDetails.Size = new System.Drawing.Size(157, 65);
             this.btnPublisherDetails.TabIndex = 11;
@@ -128,51 +124,11 @@
             this.btnPublisherDetails.UseVisualStyleBackColor = true;
             this.btnPublisherDetails.Click += new System.EventHandler(this.btnPublisherDetails_Click);
             // 
-            // btnEditStudent
-            // 
-            this.btnEditStudent.Location = new System.Drawing.Point(33, 442);
-            this.btnEditStudent.Name = "btnEditStudent";
-            this.btnEditStudent.Size = new System.Drawing.Size(157, 56);
-            this.btnEditStudent.TabIndex = 12;
-            this.btnEditStudent.Text = "Edit student";
-            this.btnEditStudent.UseVisualStyleBackColor = true;
-            this.btnEditStudent.Click += new System.EventHandler(this.btnEditStudent_Click);
-            // 
-            // btnEditAuthor
-            // 
-            this.btnEditAuthor.Location = new System.Drawing.Point(33, 369);
-            this.btnEditAuthor.Name = "btnEditAuthor";
-            this.btnEditAuthor.Size = new System.Drawing.Size(157, 56);
-            this.btnEditAuthor.TabIndex = 13;
-            this.btnEditAuthor.Text = "Edit author";
-            this.btnEditAuthor.UseVisualStyleBackColor = true;
-            this.btnEditAuthor.Click += new System.EventHandler(this.btnEditAuthor_Click);
-            // 
-            // btnEditBook
-            // 
-            this.btnEditBook.Location = new System.Drawing.Point(33, 516);
-            this.btnEditBook.Name = "btnEditBook";
-            this.btnEditBook.Size = new System.Drawing.Size(156, 53);
-            this.btnEditBook.TabIndex = 14;
-            this.btnEditBook.Text = "Edit book";
-            this.btnEditBook.UseVisualStyleBackColor = true;
-            this.btnEditBook.Click += new System.EventHandler(this.btnEditBook_Click);
-            // 
-            // btnEditPublisher
-            // 
-            this.btnEditPublisher.Location = new System.Drawing.Point(33, 585);
-            this.btnEditPublisher.Name = "btnEditPublisher";
-            this.btnEditPublisher.Size = new System.Drawing.Size(157, 52);
-            this.btnEditPublisher.TabIndex = 15;
-            this.btnEditPublisher.Text = "Edit publisher";
-            this.btnEditPublisher.UseVisualStyleBackColor = true;
-            this.btnEditPublisher.Click += new System.EventHandler(this.btnEditPublisher_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(615, 29);
+            this.label1.Location = new System.Drawing.Point(232, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 25);
             this.label1.TabIndex = 17;
@@ -180,7 +136,7 @@
             // 
             // btnBorrow
             // 
-            this.btnBorrow.Location = new System.Drawing.Point(363, 381);
+            this.btnBorrow.Location = new System.Drawing.Point(1027, 69);
             this.btnBorrow.Name = "btnBorrow";
             this.btnBorrow.Size = new System.Drawing.Size(165, 68);
             this.btnBorrow.TabIndex = 18;
@@ -190,7 +146,7 @@
             // 
             // btnCloseBorrow
             // 
-            this.btnCloseBorrow.Location = new System.Drawing.Point(363, 486);
+            this.btnCloseBorrow.Location = new System.Drawing.Point(1027, 161);
             this.btnCloseBorrow.Name = "btnCloseBorrow";
             this.btnCloseBorrow.Size = new System.Drawing.Size(165, 66);
             this.btnCloseBorrow.TabIndex = 19;
@@ -200,7 +156,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(733, 655);
+            this.btnExit.Location = new System.Drawing.Point(1036, 631);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(156, 47);
             this.btnExit.TabIndex = 20;
@@ -212,15 +168,15 @@
             // 
             this.lstLoans.FormattingEnabled = true;
             this.lstLoans.ItemHeight = 20;
-            this.lstLoans.Location = new System.Drawing.Point(584, 57);
+            this.lstLoans.Location = new System.Drawing.Point(237, 57);
             this.lstLoans.Name = "lstLoans";
-            this.lstLoans.Size = new System.Drawing.Size(514, 504);
+            this.lstLoans.Size = new System.Drawing.Size(756, 564);
             this.lstLoans.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(827, 573);
+            this.label2.Location = new System.Drawing.Point(421, 640);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(375, 64);
             this.label2.TabIndex = 22;
@@ -230,17 +186,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1149, 705);
+            this.ClientSize = new System.Drawing.Size(1303, 705);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstLoans);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCloseBorrow);
             this.Controls.Add(this.btnBorrow);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnEditPublisher);
-            this.Controls.Add(this.btnEditBook);
-            this.Controls.Add(this.btnEditAuthor);
-            this.Controls.Add(this.btnEditStudent);
             this.Controls.Add(this.btnPublisherDetails);
             this.Controls.Add(this.btnBookDetails);
             this.Controls.Add(this.btnAuthorDetails);
@@ -267,10 +219,6 @@
         private System.Windows.Forms.Button btnAuthorDetails;
         private System.Windows.Forms.Button btnBookDetails;
         private System.Windows.Forms.Button btnPublisherDetails;
-        private System.Windows.Forms.Button btnEditStudent;
-        private System.Windows.Forms.Button btnEditAuthor;
-        private System.Windows.Forms.Button btnEditBook;
-        private System.Windows.Forms.Button btnEditPublisher;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBorrow;
         private System.Windows.Forms.Button btnCloseBorrow;

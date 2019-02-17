@@ -12,6 +12,7 @@ namespace Library.Infrastructure.Extensions
        
         public static string RemoveWhiteSpaces(this string s)
         {
+            
             s = s.Trim();
             return Regex.Replace(s, @"\s{2,}", " ");
         }

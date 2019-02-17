@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
+using Library.Presentation.EditForms;
 
 namespace Library.Presentation.DetailsForm
 {
@@ -16,6 +17,7 @@ namespace Library.Presentation.DetailsForm
     {
         private readonly BookRepository _bookRepository;
         private List<Book> _listOfBooks;
+        private Book _wantedBook;
         public BookDetails()
         {
             InitializeComponent();
@@ -38,12 +40,12 @@ namespace Library.Presentation.DetailsForm
         private void cmbBook_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selectedBook = cmbBook.SelectedItem.ToString();
-            var wantedBook = _listOfBooks.First(book => book.Name == selectedBook);
-            txtCopies.Text = wantedBook.NumberOfCopies.ToString();
-            txtPages.Text = wantedBook.NumberOfPages.ToString();
-            txtPublisher.Text = wantedBook.Publisher.Name;
-            txtYear.Text = wantedBook.YearOfPublish.ToString();
-            txtAuthor.Text = wantedBook.Author.NameSurname();
+            _wantedBook = _listOfBooks.First(book => book.Name == selectedBook);
+            txtCopies.Text = _wantedBook.NumberOfCopies.ToString();
+            txtPages.Text = _wantedBook.NumberOfPages.ToString();
+            txtPublisher.Text = _wantedBook.Publisher.Name;
+            txtYear.Text = _wantedBook.YearOfPublish.ToString();
+            txtAuthor.Text = _wantedBook.Author.NameSurname();
         }
 
         private bool AddBooks()
@@ -53,6 +55,19 @@ namespace Library.Presentation.DetailsForm
                 cmbBook.Items.Add(book.Name);
             }
             return cmbBook.Items.Count != 0;
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (cmbBook.SelectedItem == null)
+            {
+                MessageBox.Show(@"You have to choose book", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+               
+            var editBookForm = new EditBook(_wantedBook);
+            editBookForm.ShowDialog();
+            AddBooks();
         }
         // -------------add delete book
     }

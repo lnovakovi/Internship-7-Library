@@ -41,6 +41,7 @@
             this.Loans = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -141,16 +142,16 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(315, 346);
+            this.btnDelete.Location = new System.Drawing.Point(469, 346);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(134, 41);
+            this.btnDelete.Size = new System.Drawing.Size(118, 41);
             this.btnDelete.TabIndex = 12;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(487, 347);
+            this.btnExit.Location = new System.Drawing.Point(629, 347);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(129, 40);
             this.btnExit.TabIndex = 13;
@@ -158,11 +159,21 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(315, 346);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(125, 40);
+            this.btnEdit.TabIndex = 14;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
             // StudentDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.Loans);
@@ -199,5 +210,6 @@
         private System.Windows.Forms.Label Loans;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

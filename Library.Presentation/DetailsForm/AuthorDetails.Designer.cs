@@ -36,6 +36,7 @@
             this.btnDeleteAuthor = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +78,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(99, 332);
+            this.btnExit.Location = new System.Drawing.Point(98, 372);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(142, 50);
             this.btnExit.TabIndex = 4;
@@ -87,12 +88,13 @@
             // 
             // btnDeleteAuthor
             // 
-            this.btnDeleteAuthor.Location = new System.Drawing.Point(99, 244);
+            this.btnDeleteAuthor.Location = new System.Drawing.Point(98, 293);
             this.btnDeleteAuthor.Name = "btnDeleteAuthor";
             this.btnDeleteAuthor.Size = new System.Drawing.Size(141, 53);
             this.btnDeleteAuthor.TabIndex = 5;
             this.btnDeleteAuthor.Text = "Delete author";
             this.btnDeleteAuthor.UseVisualStyleBackColor = true;
+            this.btnDeleteAuthor.Click += new System.EventHandler(this.btnDeleteAuthor_Click);
             // 
             // txtDate
             // 
@@ -111,11 +113,22 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Date Of Birth";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(98, 229);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(141, 51);
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "Edit author";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // AuthorDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 457);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.btnDeleteAuthor);
@@ -142,5 +155,6 @@
         private System.Windows.Forms.Button btnDeleteAuthor;
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
