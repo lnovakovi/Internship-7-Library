@@ -71,19 +71,19 @@ namespace Library.Presentation.EditForms
             }
 
             var gender = cmbGender.SelectedItem != null ? (Gender)Enum.Parse(typeof(Gender), cmbGender.SelectedItem.ToString()) : _student.Gender;
-            var grade = cmbGender.SelectedItem != null ? (Grade)Enum.Parse(typeof(Grade), cmbGrade.SelectedItem.ToString()) : _student.Grade;
+            var grade = cmbGrade.SelectedItem != null ? (Grade)Enum.Parse(typeof(Grade), cmbGrade.SelectedItem.ToString()) : _student.Grade;
 
             var newSt = new Student
             {
                 Name = newName,
                 Surname = newSurname,
-                DateOfBirth = dateBirth.Value,
+                DateOfBirth = newDate,
                 Gender = gender,
                 Grade = grade
             };
 
-            if (_studentRepository.UpdateStudent(_student, newSt))
-                MessageBox.Show("Edited student");
+            MessageBox.Show(_studentRepository.UpdateStudent(_student, newSt), "INFO", MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
             Close();
 
 

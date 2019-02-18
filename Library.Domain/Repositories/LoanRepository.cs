@@ -14,12 +14,14 @@ namespace Library.Domain.Repositories
     {
         private readonly LibraryContext _context;
         private readonly StudentRepository _studentRepository;
+        private readonly BookRepository _bookRepository;
         private readonly HistoryRepository _historyRepository;
         public LoanRepository()
         {
            _context = new LibraryContext();
            _studentRepository=new StudentRepository();
-            _historyRepository = new HistoryRepository();
+           _historyRepository = new HistoryRepository();
+           _bookRepository=new BookRepository();
         }
 
         public string AddLoan(Loan loan)
@@ -28,6 +30,9 @@ namespace Library.Domain.Repositories
             {
                 return "Student already has loan!";
             }
+
+            if (_bookRepository.ReturnNumOfCopies(loan.Book) == 0)
+                return "All books are out!";
             _context.Attach(loan.Student);
             _context.Attach(loan.Book);
             var bookToRent = _context.Books.First(book => book == loan.Book);

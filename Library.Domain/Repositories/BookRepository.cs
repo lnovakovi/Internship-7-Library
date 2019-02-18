@@ -78,27 +78,32 @@ namespace Library.Domain.Repositories
             return _context.Books.Any(book => book.Name == bookToCheck.Name && book.Author == bookToCheck.Author);
         }
 
-        public string EditBook(Book oldBook, Book newBook)
+        public bool EditBook(Book newBook)
         {
-            /// not working!!
-            
+
+            var bookToEdit = _context.Books.Find(newBook.BookId);
+            //_context.Authors.Attach(newBook.Author);
+            //_context.Publishers.Attach(newBook.Publisher);
             if (!newBook.Name.CheckIfEmpty())
-                    oldBook.Name = newBook.Name;
+                bookToEdit.Name = newBook.Name;
             if (!newBook.Description.CheckIfEmpty())
-                    oldBook.Description = newBook.Description;
-            //oldBook.Author = newBook.Author;
-            //oldBook.Publisher = newBook.Publisher;
-            oldBook.YearOfPublish = newBook.YearOfPublish;
-            oldBook.NumberOfCopies = newBook.NumberOfCopies;
-            oldBook.NumberOfPages = newBook.NumberOfCopies;
-            oldBook.Genre = newBook.Genre;
-              
-            _context.SaveChanges();
-            return $"Edited {oldBook.Name}";
+                bookToEdit.Description = newBook.Description;
+            bookToEdit.Author = _context.Authors.Find(newBook.Author.AuthorID);
+            bookToEdit.Publisher = _context.Publishers.Find(newBook.Publisher.PublisherId);
+            bookToEdit.YearOfPublish = newBook.YearOfPublish;
+            bookToEdit.NumberOfCopies = newBook.NumberOfCopies;
+            bookToEdit.NumberOfPages = newBook.NumberOfCopies;
+            bookToEdit.Genre = newBook.Genre;
+
+            return 0!= _context.SaveChanges();
+            
 
         }
 
-      
+
+
+
+
 
     }
 }

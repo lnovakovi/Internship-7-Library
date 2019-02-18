@@ -84,11 +84,11 @@ namespace Library.Presentation.EditForms
             var newDesc = txtDesc.Text;
             var newNumCopy = txtCopies.Text;
             var newNumPages = txtPages.Text;
-            var newNumYear = txtPages.Text;
-           
-            var newAuth = cmbAuthor.SelectedItem != null ? _authorRepository.GetAuthorByName(cmbAuthor.SelectedItem.ToString()) : _bookToEdit.Author;
+            var newNumYear = txtYear.Text;
+
+           var newAuth = cmbAuthor.SelectedItem != null ? _authorRepository.GetAuthorByName(cmbAuthor.SelectedItem.ToString()) : _bookToEdit.Author;
             var newPub = cmbPublisher.SelectedItem != null ? _publisherRepository.GetAllPublishers().First(pub => pub == cmbPublisher.SelectedItem as Publisher) : _bookToEdit.Publisher;
-            var genre = cmbGenre.SelectedItem != null ? (Genre) Enum.Parse(typeof(Genre), cmbGenre.SelectedItem.ToString()) : _bookToEdit.Genre;
+            var genre = (Genre)Enum.Parse(typeof(Genre), cmbGenre.SelectedItem.ToString()); //!= null ? (Genre) Enum.Parse(typeof(Genre), cmbGenre.SelectedItem.ToString()) : _bookToEdit.Genre;
            
             if (newNumCopy.CheckIfEmpty() || newNumPages.CheckIfEmpty() || newNumYear.CheckIfEmpty())
             { // if fields not empty, try parse them
@@ -105,6 +105,7 @@ namespace Library.Presentation.EditForms
             }
             var newBook = new Book
             {
+                BookId = _bookToEdit.BookId,
                 Name = newName,
                 Description = newDesc,
                 NumberOfCopies = int.Parse(newNumCopy),
@@ -115,8 +116,12 @@ namespace Library.Presentation.EditForms
                 Genre = genre
             };
 
-            MessageBox.Show(_bookRepository.EditBook(_bookToEdit, newBook),@"INFO",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            Close();
+            if (_bookRepository.EditBook(newBook))
+            {
+                MessageBox.Show(@"Edited", @"INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Close();
+
+            }
 
         }
     }

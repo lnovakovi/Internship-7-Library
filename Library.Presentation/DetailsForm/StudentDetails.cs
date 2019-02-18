@@ -92,6 +92,7 @@ namespace Library.Presentation.DetailsForm
             var selected = _studentRepository.GetStudentByName(cmbStudent.SelectedItem.ToString());
             var editForm = new EditStudent(selected);
             editForm.ShowDialog();
+            Close();
         }
     }
 }

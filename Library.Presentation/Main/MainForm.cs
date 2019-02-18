@@ -104,7 +104,7 @@ namespace Library.Presentation.Main
             var loans = _loanRepository.GetActiveLoans();
             foreach (var loan in loans)
             {
-                lstLoans.Items.Add( loan.LoanDetails());
+                lstLoans.Items.Add($"{loan.LoanDetails()} + Return: {new DateTime()}");
             }
         }
 

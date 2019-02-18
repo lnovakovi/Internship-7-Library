@@ -63,6 +63,7 @@ namespace Library.Presentation.AddForms
             if (!dateofBirth.CheckForAges(6, 16)) // students in range 6-17 years old
             {
                 MessageBox.Show(@"Check ages! ( Students are aged between 6 and 17 years)", @"WARNING");
+                return;
             }
             var student = new Student()
             {
