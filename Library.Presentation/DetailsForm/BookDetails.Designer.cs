@@ -45,6 +45,8 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDesc = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtGenre = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDeleteBook
@@ -183,7 +185,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(305, 32);
+            this.label6.Location = new System.Drawing.Point(296, 32);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 20);
             this.label6.TabIndex = 16;
@@ -198,11 +200,30 @@
             this.txtDesc.Size = new System.Drawing.Size(258, 95);
             this.txtDesc.TabIndex = 17;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(302, 203);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 20);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Genre";
+            // 
+            // txtGenre
+            // 
+            this.txtGenre.Location = new System.Drawing.Point(306, 237);
+            this.txtGenre.Name = "txtGenre";
+            this.txtGenre.ReadOnly = true;
+            this.txtGenre.Size = new System.Drawing.Size(178, 26);
+            this.txtGenre.TabIndex = 19;
+            // 
             // BookDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 484);
+            this.Controls.Add(this.txtGenre);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnEdit);
@@ -246,5 +267,7 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDesc;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtGenre;
     }
 }

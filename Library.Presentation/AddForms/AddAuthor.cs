@@ -42,6 +42,7 @@ namespace Library.Presentation.AddForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             if (txtName.Text.CheckIfEmpty() || txtSurname.Text.CheckIfEmpty() || cmbGender.SelectedItem == null)
             {
                 MessageBox.Show(@"All fields required", @"WARNING");

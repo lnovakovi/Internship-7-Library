@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Authentication.ExtendedProtection;
-using System.Text;
-using System.Threading.Tasks;
 using Library.Data.Entities;
 using Library.Data.Entities.Models;
 using Microsoft.EntityFrameworkCore;
@@ -42,12 +39,12 @@ namespace Library.Domain.Repositories
             return "Loan activated";
         }
 
-        public void CloseLoan(string loanDetails)
+        public string CloseLoan(string loanDetails)
         {
             var actualLoan =
                 _context.Loans.FirstOrDefault(actLoan => actLoan.LoanDetails() == loanDetails);
-            if(actualLoan == null)
-                return;
+            if (actualLoan == null)
+                return "No loan";
             var returnedBook = _context.Books.FirstOrDefault(book => book.BookId == actualLoan.BookId);
             returnedBook.NumberOfCopies += 1;
             actualLoan.ReturnDate = DateTime.Now;
@@ -57,6 +54,8 @@ namespace Library.Domain.Repositories
             };
             _historyRepository.AddLoan(histroy);
             _context.SaveChanges();
+            return
+                $"Loan closed, student needs to pay:{actualLoan.CalculateOverdue(actualLoan.LoanDate, DateTime.Now)} kn";
 
         }
 
@@ -69,6 +68,7 @@ namespace Library.Domain.Repositories
         {
             return GetAllLoans().Where(loan => loan.ReturnDate == null).ToList();
         }
+
         public List<Loan> GetStudentsLoans(string student)
         {
             return GetAllLoans().Where(loan => loan.Student.NameSurname() == student).ToList();

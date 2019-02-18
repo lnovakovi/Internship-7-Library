@@ -19,7 +19,7 @@ namespace Library.Presentation.DetailsForm
         private readonly PublisherRepository _publisherRepository;
         private readonly BookRepository _bookRepository;
 
-        private List<Publisher> _listOfPublishers;
+        private readonly List<Publisher> _listOfPublishers;
         private Publisher _wantedPublisher;
 
         public PublisherDetails()
@@ -62,16 +62,19 @@ namespace Library.Presentation.DetailsForm
         {
             if (LoadPublishers()) return;
             MessageBox.Show(@"No details because base is empty", @"WARNING");
-            Close();
+            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (_wantedPublisher == null)
+            {
+                MessageBox.Show(@"Choose publisher", @"WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var editForm = new EditPublisher(_wantedPublisher);
             editForm.ShowDialog();
-            LoadPublishers();
-            txtAddress.Clear();
-            cmbName.Text = "";
+            Close();
 
         }
 

@@ -25,7 +25,13 @@ namespace Library.Domain.Repositories
         public bool AddLoan(History loanHistory)
         {
             _context.Histories.Add(loanHistory);
-            _context.SaveChanges();
+            return 0 != _context.SaveChanges();
+        }
+
+        public bool RemoveLoan(string loanHistory)
+        {
+            var wantedHistory = _context.Histories.FirstOrDefault(history => history.Loan == loanHistory);
+            _context.Histories.Remove(wantedHistory);
             return 0 != _context.SaveChanges();
         }
     }

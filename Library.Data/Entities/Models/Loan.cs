@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.Data.Entities.Models
 {
@@ -23,6 +19,14 @@ namespace Library.Data.Entities.Models
                 $"{Student.NameSurname()} Book: {Book.Name} Start: {LoanDate.Date.ToShortDateString()}, End: {ReturnDate}";
         }
 
-       
+        public double CalculateOverdue(DateTime start, DateTime end)
+        {
+            var total = (start - end).TotalDays;
+            if (total > 30)
+                return total * 0.5;
+            return 0;
+
+        }
+        
     }
 }

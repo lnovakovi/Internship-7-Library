@@ -34,7 +34,7 @@ namespace Library.Presentation.DetailsForm
         {
             if (AddStudents()) return;
             MessageBox.Show(@"No details because base is empty.", @"WARNING");
-            Close();
+            
         }
         public bool AddStudents()
         {
@@ -59,9 +59,6 @@ namespace Library.Presentation.DetailsForm
             {
                 lstLoans.Items.Add(loan.LoanDetails());
             }
-
-
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -71,24 +68,39 @@ namespace Library.Presentation.DetailsForm
                 MessageBox.Show(@"First choose student", @"WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            //need to check if student is in active loan
-            var student = _studentRepository.GetAllStudents().Find(s => s.NameSurname() == cmbStudent.SelectedItem.ToString());
-            var activeLoan = _loanRepository.GetActiveLoans();
-            foreach (var loan in activeLoan)
+            var result = MessageBox.Show(@"Are you sure? ", @"WARNING", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (result)
             {
-                if (student.StudentId == loan.StudentId)
+                case DialogResult.OK:
                 {
-                    MessageBox.Show(@"Can't delete student that is in active loan!");
-                    return;
+                    //need to check if student is in active loan
+                    var student = _studentRepository.GetAllStudents().Find(s => s.NameSurname() == cmbStudent.SelectedItem.ToString());
+                    var activeLoan = _loanRepository.GetActiveLoans();
+                    foreach (var loan in activeLoan)
+                    {
+                        if (student.StudentId == loan.StudentId)
+                        {
+                            MessageBox.Show(@"Can't delete student that is in active loan!");
+                            return;
+                        }
+                    }
+
+                    MessageBox.Show(_studentRepository.Delete(student));
+                    
+                    break;
                 }
             }
-
-            MessageBox.Show(_studentRepository.Delete(student));
             Close();
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (cmbStudent.SelectedItem == null)
+            {
+                MessageBox.Show(@"Choose a student!");
+                return;
+            }
             var selected = _studentRepository.GetStudentByName(cmbStudent.SelectedItem.ToString());
             var editForm = new EditStudent(selected);
             editForm.ShowDialog();

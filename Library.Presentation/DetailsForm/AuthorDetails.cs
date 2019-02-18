@@ -32,8 +32,7 @@ namespace Library.Presentation.DetailsForm
             var authors = _authorRepository.GetAllAuthors();
             foreach (var author in authors)
             {
-                cmbAuthor.Items.Add(author.NameSurname());
-                
+                cmbAuthor.Items.Add(author.NameSurname());               
             }
             return authors.Count != 0;
         }
@@ -42,7 +41,7 @@ namespace Library.Presentation.DetailsForm
         {
             if (AddAuthors()) return;
             MessageBox.Show(@"No details because base is empty.", @"WARNING");
-            Close();
+            
         }
 
         private void cmbAuthor_SelectedIndexChanged(object sender, EventArgs e)
@@ -52,6 +51,7 @@ namespace Library.Presentation.DetailsForm
             _wantedAuthor = _authorRepository.GetAuthorByName(selectedAuthor);
             var books = _bookRepository.GetBooksByAuthor(_wantedAuthor);
             txtDate.Text = _wantedAuthor.DateOfBirth.ToShortDateString();
+            txtGender.Text = _wantedAuthor.Gender.ToString();
             foreach (var book in books)
             {
                 lstBooks.Items.Add(book.Name);
@@ -65,9 +65,14 @@ namespace Library.Presentation.DetailsForm
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (_wantedAuthor == null)
+            {
+                MessageBox.Show(@"Choose an author first!", @"WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             var editForm = new EditAuthor(_wantedAuthor);
             editForm.ShowDialog();
-            AddAuthors();
+            Close();
 
         }
 

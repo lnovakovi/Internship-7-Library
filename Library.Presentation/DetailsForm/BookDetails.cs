@@ -36,7 +36,7 @@ namespace Library.Presentation.DetailsForm
         {
             if (AddBooks()) return;
             MessageBox.Show(@"No details because base is empty", @"WARNING");
-            Close();          
+
         }
 
         private void cmbBook_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,6 +49,7 @@ namespace Library.Presentation.DetailsForm
             txtPublisher.Text = _wantedBook.Publisher.Name;
             txtYear.Text = _wantedBook.YearOfPublish.ToString();
             txtAuthor.Text = _wantedBook.Author.NameSurname();
+            txtGenre.Text = _wantedBook.Genre.ToString();
         }
 
         private bool AddBooks()
@@ -70,7 +71,7 @@ namespace Library.Presentation.DetailsForm
                
             var editBookForm = new EditBook(_wantedBook);
             editBookForm.ShowDialog();
-            AddBooks();
+            Close();
         }
 
         private void btnDeleteBook_Click(object sender, EventArgs e)

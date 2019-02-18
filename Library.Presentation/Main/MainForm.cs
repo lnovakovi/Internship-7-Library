@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
 using Library.Presentation.AddForms;
 using Library.Presentation.Borrowings;
 using Library.Presentation.DetailsForm;
-using Library.Presentation.EditForms;
 
 namespace Library.Presentation.Main
 {
@@ -104,17 +95,23 @@ namespace Library.Presentation.Main
             var loans = _loanRepository.GetActiveLoans();
             foreach (var loan in loans)
             {
-                lstLoans.Items.Add($"{loan.LoanDetails()} + Return: {new DateTime()}");
+                lstLoans.Items.Add($"{loan.LoanDetails()}");
             }
         }
 
         private void btnCloseBorrow_Click(object sender, EventArgs e)
         {
-            
+
             if (lstLoans.SelectedItem == null)
+            {
                 MessageBox.Show(@"Choose loan", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+                
+            
             var selectedLoan = lstLoans.SelectedItem.ToString();
-            _loanRepository.CloseLoan(selectedLoan);
+
+            MessageBox.Show(_loanRepository.CloseLoan(selectedLoan));
             ResetLoans();
         }
 

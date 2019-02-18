@@ -58,9 +58,21 @@ namespace Library.Presentation.AddForms
                 return;
             }
 
-            if (int.Parse(year) > 2019 || year.Length>4 || year.Length<4)
+            if (int.Parse(year) > DateTime.Now.Year || year.Length>4 || int.Parse(year) < 0)
             {
                 MessageBox.Show(@"Can't add year that didn't happened",@"WARNING");
+                return;
+            }
+
+            if (int.Parse(copy) <= 0)
+            {
+                MessageBox.Show(@"Can't be 0 or less copies!");
+                return;
+            }
+
+            if (int.Parse(pages) < 1)
+            {
+                MessageBox.Show(@"Check number of pages");
                 return;
             }
             var book = new Book

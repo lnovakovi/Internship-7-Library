@@ -37,6 +37,8 @@
             this.txtDate = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtGender = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -88,7 +90,7 @@
             // 
             // btnDeleteAuthor
             // 
-            this.btnDeleteAuthor.Location = new System.Drawing.Point(98, 293);
+            this.btnDeleteAuthor.Location = new System.Drawing.Point(227, 303);
             this.btnDeleteAuthor.Name = "btnDeleteAuthor";
             this.btnDeleteAuthor.Size = new System.Drawing.Size(141, 53);
             this.btnDeleteAuthor.TabIndex = 5;
@@ -115,7 +117,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(98, 229);
+            this.btnEdit.Location = new System.Drawing.Point(39, 303);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(141, 51);
             this.btnEdit.TabIndex = 8;
@@ -123,11 +125,30 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 220);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Gender";
+            // 
+            // txtGender
+            // 
+            this.txtGender.Location = new System.Drawing.Point(30, 253);
+            this.txtGender.Name = "txtGender";
+            this.txtGender.ReadOnly = true;
+            this.txtGender.Size = new System.Drawing.Size(184, 26);
+            this.txtGender.TabIndex = 10;
+            // 
             // AuthorDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 457);
+            this.Controls.Add(this.txtGender);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtDate);
@@ -156,5 +177,7 @@
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtGender;
     }
 }

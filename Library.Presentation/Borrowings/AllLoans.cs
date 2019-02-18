@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
 
 namespace Library.Presentation.Borrowings
@@ -29,6 +30,32 @@ namespace Library.Presentation.Borrowings
         private void AllLoans_Load(object sender, EventArgs e)
         {
 
+            Reset();
+            if (lstLoans.Items.Count == 0)
+            {
+                MessageBox.Show("No loans!");
+                Close();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (lstLoans.SelectedItem == null)
+            {
+                MessageBox.Show(@"You haven't chosen anything");
+                return;
+                
+            }
+
+            if (_historyRepository.RemoveLoan(lstLoans.SelectedItem.ToString()))
+                MessageBox.Show("Removed loan");
+            Reset();
+
+        }
+
+        public void Reset()
+        {
+            lstLoans.Items.Clear();
             var history = _historyRepository.GetAll();
             foreach (var loan in history)
             {
