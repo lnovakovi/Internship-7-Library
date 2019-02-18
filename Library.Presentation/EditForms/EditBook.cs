@@ -20,6 +20,7 @@ namespace Library.Presentation.EditForms
         private readonly BookRepository _bookRepository;
         private readonly PublisherRepository _publisherRepository;
         private readonly AuthorRepository _authorRepository;
+
         public EditBook(Book editBook)
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace Library.Presentation.EditForms
         {
             Close();
         }
+
         public void AddGenre()
         {
             var enums = Enum.GetValues(typeof(Genre));
@@ -53,6 +55,7 @@ namespace Library.Presentation.EditForms
                 cmbGenre.Items.Add(job);
             }
         }
+
         public bool AddPublisher()
         {
             var publishers = _publisherRepository.GetAllPublishers();
@@ -84,7 +87,7 @@ namespace Library.Presentation.EditForms
             var newNumYear = txtPages.Text;
            
             var newAuth = cmbAuthor.SelectedItem != null ? _authorRepository.GetAuthorByName(cmbAuthor.SelectedItem.ToString()) : _bookToEdit.Author;
-            var newPub = cmbPublisher.SelectedItem != null ? _publisherRepository.GetAllPublishers().First(pub => pub.Name == cmbPublisher.SelectedItem.ToString()) : _bookToEdit.Publisher;
+            var newPub = cmbPublisher.SelectedItem != null ? _publisherRepository.GetAllPublishers().First(pub => pub == cmbPublisher.SelectedItem as Publisher) : _bookToEdit.Publisher;
             var genre = cmbGenre.SelectedItem != null ? (Genre) Enum.Parse(typeof(Genre), cmbGenre.SelectedItem.ToString()) : _bookToEdit.Genre;
            
             if (newNumCopy.CheckIfEmpty() || newNumPages.CheckIfEmpty() || newNumYear.CheckIfEmpty())
@@ -111,12 +114,9 @@ namespace Library.Presentation.EditForms
                 Publisher = newPub,
                 Genre = genre
             };
+
             MessageBox.Show(_bookRepository.EditBook(_bookToEdit, newBook),@"INFO",MessageBoxButtons.OK,MessageBoxIcon.Information);
             Close();
-
-
-
-
 
         }
     }

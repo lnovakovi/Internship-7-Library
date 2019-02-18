@@ -42,6 +42,7 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lstLoans = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAllLoans = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddAuthor
@@ -182,11 +183,22 @@
             this.label2.TabIndex = 22;
             this.label2.Text = "*Choose loan you want to close";
             // 
+            // btnAllLoans
+            // 
+            this.btnAllLoans.Location = new System.Drawing.Point(1027, 272);
+            this.btnAllLoans.Name = "btnAllLoans";
+            this.btnAllLoans.Size = new System.Drawing.Size(165, 57);
+            this.btnAllLoans.TabIndex = 23;
+            this.btnAllLoans.Text = "History\r\n";
+            this.btnAllLoans.UseVisualStyleBackColor = true;
+            this.btnAllLoans.Click += new System.EventHandler(this.btnAllLoans_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 705);
+            this.Controls.Add(this.btnAllLoans);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstLoans);
             this.Controls.Add(this.btnExit);
@@ -225,5 +237,6 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.ListBox lstLoans;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAllLoans;
     }
 }

@@ -70,6 +70,12 @@
     <Compile Include="AddForms\AddStudent.Designer.cs">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Borrowings\AllLoans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowings\AllLoans.Designer.cs">
+      <DependentUpon>AllLoans.cs</DependentUpon>
+    </Compile>
     <Compile Include="Borrowings\NewBorrow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     <EmbeddedResource Include="AddForms\AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings\AllLoans.resx">
+      <DependentUpon>AllLoans.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Borrowings\NewBorrow.resx">
       <DependentUpon>NewBorrow.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditForms\EditPublisher.resx">
       <DependentUpon>EditPublisher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditForms\EditStudent.resx">
+      <DependentUpon>EditStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

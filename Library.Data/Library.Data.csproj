@@ -129,6 +129,7 @@
     <Compile Include="Entities\LibraryContext.cs" />
     <Compile Include="Entities\Models\Author.cs" />
     <Compile Include="Entities\Models\Book.cs" />
+    <Compile Include="Entities\Models\History.cs" />
     <Compile Include="Entities\Models\Loan.cs" />
     <Compile Include="Entities\Models\Publisher.cs" />
     <Compile Include="Entities\Models\Student.cs" />
@@ -138,6 +139,18 @@
     <Compile Include="Migrations\20190216192307_InitialCreate.cs" />
     <Compile Include="Migrations\20190216192307_InitialCreate.designer.cs">
       <DependentUpon>20190216192307_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190217235529_CreateHistory.cs" />
+    <Compile Include="Migrations\20190217235529_CreateHistory.designer.cs">
+      <DependentUpon>20190217235529_CreateHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190217235943_CorrectContext.cs" />
+    <Compile Include="Migrations\20190217235943_CorrectContext.designer.cs">
+      <DependentUpon>20190217235943_CorrectContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20190218001228_ChangedLoan.cs" />
+    <Compile Include="Migrations\20190218001228_ChangedLoan.designer.cs">
+      <DependentUpon>20190218001228_ChangedLoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\LibraryContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

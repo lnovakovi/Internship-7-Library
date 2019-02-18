@@ -4,14 +4,16 @@ using Library.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190217235529_CreateHistory")]
+    partial class CreateHistory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,19 +71,6 @@ namespace Library.Data.Migrations
                     b.ToTable("Books");
                 });
 
-            modelBuilder.Entity("Library.Data.Entities.Models.History", b =>
-                {
-                    b.Property<int>("HistoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Loan");
-
-                    b.HasKey("HistoryId");
-
-                    b.ToTable("Histories");
-                });
-
             modelBuilder.Entity("Library.Data.Entities.Models.Loan", b =>
                 {
                     b.Property<int>("LoanId")
@@ -91,6 +80,8 @@ namespace Library.Data.Migrations
                     b.Property<int>("BookId");
 
                     b.Property<DateTime>("LoanDate");
+
+                    b.Property<double>("Overdue");
 
                     b.Property<DateTime?>("ReturnDate");
 

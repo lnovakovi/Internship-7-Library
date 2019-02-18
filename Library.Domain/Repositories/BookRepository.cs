@@ -46,6 +46,10 @@ namespace Library.Domain.Repositories
             return _context.Books.Where(book => book.Publisher == pubToGet).ToList();
         }
 
+        public Book GetBookByName(string name)
+        {
+            return _context.Books.First(b => b.Name == name);
+        }
 
         public string AddBook(Book bookToAdd)
         {
@@ -77,27 +81,18 @@ namespace Library.Domain.Repositories
         public string EditBook(Book oldBook, Book newBook)
         {
             /// not working!!
-            var wantedBook = GetAllBooks().FirstOrDefault(b => b.ToString() == oldBook.ToString());
-            if (!newBook.Name.CheckIfEmpty())
-                if (wantedBook != null)
-                    wantedBook.Name = newBook.Name;
-            if (!newBook.Description.CheckIfEmpty())
-                if (wantedBook != null)
-                    wantedBook.Description = newBook.Description;
-            wantedBook.Author = _context.Authors.First(author => author == newBook.Author);
-            wantedBook.Publisher = _context.Publishers.First(publisher => publisher == newBook.Publisher);
-
-            if (wantedBook != null)
-            {
-                wantedBook.YearOfPublish = newBook.YearOfPublish;
-                wantedBook.NumberOfCopies = newBook.NumberOfCopies;
-                wantedBook.NumberOfPages = newBook.NumberOfCopies;
-                wantedBook.Author = newBook.Author;
-                wantedBook.Publisher = newBook.Publisher;
-                wantedBook.Genre = newBook.Genre;
-            }
-
             
+            if (!newBook.Name.CheckIfEmpty())
+                    oldBook.Name = newBook.Name;
+            if (!newBook.Description.CheckIfEmpty())
+                    oldBook.Description = newBook.Description;
+            //oldBook.Author = newBook.Author;
+            //oldBook.Publisher = newBook.Publisher;
+            oldBook.YearOfPublish = newBook.YearOfPublish;
+            oldBook.NumberOfCopies = newBook.NumberOfCopies;
+            oldBook.NumberOfPages = newBook.NumberOfCopies;
+            oldBook.Genre = newBook.Genre;
+              
             _context.SaveChanges();
             return $"Edited {oldBook.Name}";
 

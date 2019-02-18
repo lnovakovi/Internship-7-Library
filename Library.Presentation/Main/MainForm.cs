@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Library.Data.Entities.Models;
 using Library.Domain.Repositories;
 using Library.Presentation.AddForms;
+using Library.Presentation.Borrowings;
 using Library.Presentation.DetailsForm;
 using Library.Presentation.EditForms;
 
@@ -117,5 +118,10 @@ namespace Library.Presentation.Main
             ResetLoans();
         }
 
+        private void btnAllLoans_Click(object sender, EventArgs e)
+        {
+            var allLoans = new AllLoans();
+            allLoans.ShowDialog();
+        }
     }
 }

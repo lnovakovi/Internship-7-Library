@@ -29,9 +29,6 @@ namespace Library.Domain.Repositories
             _context.Students.Remove(studentToDelete);
             var numberOfChanges = _context.SaveChanges();
             return $"{studentToDelete.NameSurname()} deleted";
-            
-            //to do
-            // delete all loans he has..
         }
 
         public List<Student> GetAllStudents()
@@ -39,5 +36,20 @@ namespace Library.Domain.Repositories
             return _context.Students.Include(student => student.Loans).OrderBy(student => student.Surname).ToList();
         }
 
+        public bool UpdateStudent(Student old, Student newSt)
+        {
+            old.Name = newSt.Name;
+            old.Surname = newSt.Surname;
+            old.DateOfBirth = newSt.DateOfBirth;
+            old.Gender = newSt.Gender;
+            old.Grade = newSt.Grade;
+            _context.SaveChanges();
+            return 0 != _context.SaveChanges();
+        }
+
+        public Student GetStudentByName(string name)
+        {
+            return GetAllStudents().Find(s => s.NameSurname() == name);
+        }
     }
 }

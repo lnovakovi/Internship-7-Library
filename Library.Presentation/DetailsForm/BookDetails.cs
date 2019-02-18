@@ -16,12 +16,14 @@ namespace Library.Presentation.DetailsForm
     public partial class BookDetails : Form
     {
         private readonly BookRepository _bookRepository;
+        private readonly LoanRepository _loanRepository;
         private List<Book> _listOfBooks;
         private Book _wantedBook;
         public BookDetails()
         {
             InitializeComponent();
             _bookRepository = new BookRepository();
+            _loanRepository= new LoanRepository();
             _listOfBooks = _bookRepository.GetAllBooks();
         }
 
@@ -41,6 +43,7 @@ namespace Library.Presentation.DetailsForm
         {
             var selectedBook = cmbBook.SelectedItem.ToString();
             _wantedBook = _listOfBooks.First(book => book.Name == selectedBook);
+            txtDesc.Text = _wantedBook.Description;
             txtCopies.Text = _wantedBook.NumberOfCopies.ToString();
             txtPages.Text = _wantedBook.NumberOfPages.ToString();
             txtPublisher.Text = _wantedBook.Publisher.Name;
@@ -69,6 +72,31 @@ namespace Library.Presentation.DetailsForm
             editBookForm.ShowDialog();
             AddBooks();
         }
-        // -------------add delete book
+
+        private void btnDeleteBook_Click(object sender, EventArgs e)
+        {
+            if (cmbBook.SelectedItem == null)
+            {
+                MessageBox.Show("First choose book", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            //need to check if book is in active loan
+            var book = _bookRepository.GetBookByName(cmbBook.SelectedItem.ToString());
+            var activeLoan = _loanRepository.GetActiveLoans();
+            foreach (var loan in activeLoan)
+            {
+                if (book.BookId == loan.BookId)
+                {
+                    MessageBox.Show("Can't delete book that is in active loan!");
+                    return;
+                }
+            }
+
+            if (_bookRepository.TryDelete(book))
+                MessageBox.Show("Book deleted");
+            Close();
+
+        }
+        
     }
 }

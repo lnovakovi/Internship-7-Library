@@ -4,14 +4,16 @@ using Library.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Library.Data.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    partial class LibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190217235943_CorrectContext")]
+    partial class CorrectContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,6 +93,8 @@ namespace Library.Data.Migrations
                     b.Property<int>("BookId");
 
                     b.Property<DateTime>("LoanDate");
+
+                    b.Property<double>("Overdue");
 
                     b.Property<DateTime?>("ReturnDate");
 

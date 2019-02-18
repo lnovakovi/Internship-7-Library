@@ -18,12 +18,14 @@ namespace Library.Presentation.AddForms
         private readonly StudentRepository _studentRepository;
         private readonly BookRepository _bookRepository;
         private readonly LoanRepository _loanRepository;
+        private readonly HistoryRepository _historyRepository;
         public NewBorrow()
         {
             InitializeComponent();
             _studentRepository = new StudentRepository();
             _bookRepository = new BookRepository();
             _loanRepository = new LoanRepository();
+            _historyRepository = new HistoryRepository();
             AddStudents();
             AddBooks();
         }
@@ -68,7 +70,6 @@ namespace Library.Presentation.AddForms
             {
                 LoanDate = DateTime.Now.Date,
                 ReturnDate = null,
-                Overdue = 0,
                 Student = wantedStudent,
                 Book = wantedBook
             };

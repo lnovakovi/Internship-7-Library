@@ -43,20 +43,23 @@
             this.Publisher = new System.Windows.Forms.Label();
             this.txtPublisher = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDesc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnDeleteBook
             // 
-            this.btnDeleteBook.Location = new System.Drawing.Point(215, 326);
+            this.btnDeleteBook.Location = new System.Drawing.Point(210, 373);
             this.btnDeleteBook.Name = "btnDeleteBook";
             this.btnDeleteBook.Size = new System.Drawing.Size(131, 45);
             this.btnDeleteBook.TabIndex = 1;
             this.btnDeleteBook.Text = "Delete ";
             this.btnDeleteBook.UseVisualStyleBackColor = true;
+            this.btnDeleteBook.Click += new System.EventHandler(this.btnDeleteBook_Click);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(383, 326);
+            this.btnExit.Location = new System.Drawing.Point(383, 374);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(130, 45);
             this.btnExit.TabIndex = 2;
@@ -102,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(35, 223);
+            this.label3.Location = new System.Drawing.Point(35, 275);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(163, 20);
             this.label3.TabIndex = 7;
@@ -111,7 +114,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(221, 223);
+            this.label4.Location = new System.Drawing.Point(221, 275);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 20);
             this.label4.TabIndex = 8;
@@ -120,7 +123,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(394, 223);
+            this.label5.Location = new System.Drawing.Point(394, 275);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(119, 20);
             this.label5.TabIndex = 9;
@@ -128,7 +131,7 @@
             // 
             // txtCopies
             // 
-            this.txtCopies.Location = new System.Drawing.Point(44, 256);
+            this.txtCopies.Location = new System.Drawing.Point(40, 307);
             this.txtCopies.Name = "txtCopies";
             this.txtCopies.ReadOnly = true;
             this.txtCopies.Size = new System.Drawing.Size(94, 26);
@@ -136,7 +139,7 @@
             // 
             // txtPages
             // 
-            this.txtPages.Location = new System.Drawing.Point(228, 255);
+            this.txtPages.Location = new System.Drawing.Point(225, 307);
             this.txtPages.Name = "txtPages";
             this.txtPages.ReadOnly = true;
             this.txtPages.Size = new System.Drawing.Size(97, 26);
@@ -144,7 +147,7 @@
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(403, 257);
+            this.txtYear.Location = new System.Drawing.Point(398, 307);
             this.txtYear.Name = "txtYear";
             this.txtYear.ReadOnly = true;
             this.txtYear.Size = new System.Drawing.Size(98, 26);
@@ -153,7 +156,7 @@
             // Publisher
             // 
             this.Publisher.AutoSize = true;
-            this.Publisher.Location = new System.Drawing.Point(290, 121);
+            this.Publisher.Location = new System.Drawing.Point(36, 214);
             this.Publisher.Name = "Publisher";
             this.Publisher.Size = new System.Drawing.Size(74, 20);
             this.Publisher.TabIndex = 13;
@@ -161,7 +164,7 @@
             // 
             // txtPublisher
             // 
-            this.txtPublisher.Location = new System.Drawing.Point(294, 154);
+            this.txtPublisher.Location = new System.Drawing.Point(36, 237);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.ReadOnly = true;
             this.txtPublisher.Size = new System.Drawing.Size(207, 26);
@@ -169,7 +172,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(68, 325);
+            this.btnEdit.Location = new System.Drawing.Point(63, 373);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(108, 46);
             this.btnEdit.TabIndex = 15;
@@ -177,11 +180,31 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(305, 32);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Description";
+            // 
+            // txtDesc
+            // 
+            this.txtDesc.Location = new System.Drawing.Point(300, 67);
+            this.txtDesc.Multiline = true;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.ReadOnly = true;
+            this.txtDesc.Size = new System.Drawing.Size(258, 95);
+            this.txtDesc.TabIndex = 17;
+            // 
             // BookDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 484);
+            this.Controls.Add(this.txtDesc);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.Publisher);
@@ -221,5 +244,7 @@
         private System.Windows.Forms.Label Publisher;
         private System.Windows.Forms.TextBox txtPublisher;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDesc;
     }
 }

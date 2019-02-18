@@ -17,7 +17,7 @@ namespace Library.Data.Entities
         public DbSet<Loan> Loans { get; set; }
         public DbSet<Publisher> Publishers { get; set; }
         public DbSet<Student> Students { get; set; }
-
+        public DbSet<History> Histories { get; set; }
         //configuring many to many relations , Fluent Api
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

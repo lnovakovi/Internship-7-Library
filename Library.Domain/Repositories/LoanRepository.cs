@@ -14,10 +14,12 @@ namespace Library.Domain.Repositories
     {
         private readonly LibraryContext _context;
         private readonly StudentRepository _studentRepository;
+        private readonly HistoryRepository _historyRepository;
         public LoanRepository()
         {
            _context = new LibraryContext();
            _studentRepository=new StudentRepository();
+            _historyRepository = new HistoryRepository();
         }
 
         public string AddLoan(Loan loan)
@@ -44,6 +46,11 @@ namespace Library.Domain.Repositories
             var returnedBook = _context.Books.FirstOrDefault(book => book.BookId == actualLoan.BookId);
             returnedBook.NumberOfCopies += 1;
             actualLoan.ReturnDate = DateTime.Now;
+            var histroy = new History
+            {
+                Loan = actualLoan.LoanDetails()
+            };
+            _historyRepository.AddLoan(histroy);
             _context.SaveChanges();
 
         }
