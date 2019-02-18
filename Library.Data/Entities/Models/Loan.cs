@@ -22,5 +22,7 @@ namespace Library.Data.Entities.Models
             return
                 $"{Student.NameSurname()} Book: {Book.Name} Start: {LoanDate.Date.ToShortDateString()}, End: {ReturnDate}";
         }
+
+       
     }
 }

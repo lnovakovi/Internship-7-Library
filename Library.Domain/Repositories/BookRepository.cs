@@ -82,14 +82,16 @@ namespace Library.Domain.Repositories
         {
 
             var bookToEdit = _context.Books.Find(newBook.BookId);
-            //_context.Authors.Attach(newBook.Author);
-            //_context.Publishers.Attach(newBook.Publisher);
+            newBook.Author.Books = null;
+            newBook.Publisher.Books = null;
+            _context.Authors.Attach(newBook.Author);
+            _context.Publishers.Attach(newBook.Publisher);
             if (!newBook.Name.CheckIfEmpty())
                 bookToEdit.Name = newBook.Name;
             if (!newBook.Description.CheckIfEmpty())
                 bookToEdit.Description = newBook.Description;
-            bookToEdit.Author = _context.Authors.Find(newBook.Author.AuthorID);
-            bookToEdit.Publisher = _context.Publishers.Find(newBook.Publisher.PublisherId);
+            bookToEdit.Author = newBook.Author;
+            bookToEdit.Publisher = newBook.Publisher;
             bookToEdit.YearOfPublish = newBook.YearOfPublish;
             bookToEdit.NumberOfCopies = newBook.NumberOfCopies;
             bookToEdit.NumberOfPages = newBook.NumberOfCopies;
