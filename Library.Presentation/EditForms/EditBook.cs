@@ -86,9 +86,9 @@ namespace Library.Presentation.EditForms
             var newNumPages = txtPages.Text;
             var newNumYear = txtYear.Text;
 
-           var newAuth = cmbAuthor.SelectedItem != null ? _authorRepository.GetAuthorByName(cmbAuthor.SelectedItem.ToString()) : _bookToEdit.Author;
+            var newAuth = cmbAuthor.SelectedItem != null ? _authorRepository.GetAuthorByName(cmbAuthor.SelectedItem.ToString()) : _bookToEdit.Author;
             var newPub = cmbPublisher.SelectedItem != null ? _publisherRepository.GetAllPublishers().First(pub => pub == cmbPublisher.SelectedItem as Publisher) : _bookToEdit.Publisher;
-            var genre = (Genre)Enum.Parse(typeof(Genre), cmbGenre.SelectedItem.ToString()); //!= null ? (Genre) Enum.Parse(typeof(Genre), cmbGenre.SelectedItem.ToString()) : _bookToEdit.Genre;
+            var genre = cmbGenre.SelectedItem != null ? (Genre) Enum.Parse(typeof(Genre), cmbGenre.SelectedItem.ToString()) : _bookToEdit.Genre;
            
             if (newNumCopy.CheckIfEmpty() || newNumPages.CheckIfEmpty() || newNumYear.CheckIfEmpty())
             { // if fields not empty, try parse them
@@ -119,9 +119,8 @@ namespace Library.Presentation.EditForms
             if (_bookRepository.EditBook(newBook))
             {
                 MessageBox.Show(@"Edited", @"INFO", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Close();
-
             }
+            Close();
 
         }
     }

@@ -17,7 +17,7 @@ namespace Library.Presentation.DetailsForm
     {
         private readonly BookRepository _bookRepository;
         private readonly LoanRepository _loanRepository;
-        private List<Book> _listOfBooks;
+        private readonly List<Book> _listOfBooks;
         private Book _wantedBook;
         public BookDetails()
         {
@@ -78,7 +78,7 @@ namespace Library.Presentation.DetailsForm
         {
             if (cmbBook.SelectedItem == null)
             {
-                MessageBox.Show("First choose book", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(@"First choose book", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             //need to check if book is in active loan

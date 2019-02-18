@@ -10,15 +10,12 @@ namespace Library.Presentation.Main
     public partial class MainForm : Form
     {
         private readonly LoanRepository _loanRepository;
-        private readonly StudentRepository _studentRepository;
-        private readonly BookRepository _bookRepository;
 
         public MainForm()
         {
             InitializeComponent();
             _loanRepository = new LoanRepository();
-            _studentRepository = new StudentRepository();
-            _bookRepository = new BookRepository();
+           
         }
 
         private void btnAddAuthor_Click(object sender, EventArgs e)
@@ -104,7 +101,7 @@ namespace Library.Presentation.Main
 
             if (lstLoans.SelectedItem == null)
             {
-                MessageBox.Show(@"Choose loan", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(@"Choose loan", @"WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
                 

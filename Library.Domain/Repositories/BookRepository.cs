@@ -23,7 +23,7 @@ namespace Library.Domain.Repositories
 
         public int ReturnNumOfCopies(Book book)
         {
-            return book == null ? 0 : _context.Books.FirstOrDefault(bk => bk.BookId == book.BookId).NumberOfCopies;
+            return book == null ? 0 : _context.Books.First(bk => bk.BookId == book.BookId).NumberOfCopies;
         }
 
         public bool TryDelete(Book toDelete)

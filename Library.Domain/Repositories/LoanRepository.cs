@@ -10,13 +10,13 @@ namespace Library.Domain.Repositories
     public class LoanRepository
     {
         private readonly LibraryContext _context;
-        private readonly StudentRepository _studentRepository;
         private readonly BookRepository _bookRepository;
         private readonly HistoryRepository _historyRepository;
+       
         public LoanRepository()
         {
            _context = new LibraryContext();
-           _studentRepository=new StudentRepository();
+           
            _historyRepository = new HistoryRepository();
            _bookRepository=new BookRepository();
         }
@@ -45,14 +45,14 @@ namespace Library.Domain.Repositories
                 _context.Loans.FirstOrDefault(actLoan => actLoan.LoanDetails() == loanDetails);
             if (actualLoan == null)
                 return "No loan";
-            var returnedBook = _context.Books.FirstOrDefault(book => book.BookId == actualLoan.BookId);
+            var returnedBook = _context.Books.First(book => book.BookId == actualLoan.BookId);
             returnedBook.NumberOfCopies += 1;
             actualLoan.ReturnDate = DateTime.Now;
-            var histroy = new History
+            var history = new History
             {
                 Loan = actualLoan.LoanDetails()
             };
-            _historyRepository.AddLoan(histroy);
+            _historyRepository.AddLoan(history);
             _context.SaveChanges();
             return
                 $"Loan closed, student needs to pay:{actualLoan.CalculateOverdue(actualLoan.LoanDate, DateTime.Now)} kn";

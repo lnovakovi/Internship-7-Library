@@ -30,7 +30,7 @@ namespace Library.Domain.Repositories
 
         public bool RemoveLoan(string loanHistory)
         {
-            var wantedHistory = _context.Histories.FirstOrDefault(history => history.Loan == loanHistory);
+            var wantedHistory = _context.Histories.First(history => history.Loan == loanHistory);
             _context.Histories.Remove(wantedHistory);
             return 0 != _context.SaveChanges();
         }
