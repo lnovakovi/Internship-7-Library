@@ -89,7 +89,7 @@ namespace Library.Domain.Repositories
             bookToEdit.Publisher = newBook.Publisher;
             bookToEdit.YearOfPublish = newBook.YearOfPublish;
             bookToEdit.NumberOfCopies = newBook.NumberOfCopies;
-            bookToEdit.NumberOfPages = newBook.NumberOfCopies;
+            bookToEdit.NumberOfPages = newBook.NumberOfPages;
             bookToEdit.Genre = newBook.Genre;
 
             return 0!= _context.SaveChanges();
